@@ -1,0 +1,231 @@
+   PID TTY      STAT   TIME COMMAND
+     1 ?        Ss     0:17 /usr/lib/systemd/systemd --switched-root --system --deserialize 22
+     2 ?        S      0:00 [kthreadd]
+     3 ?        S      0:00 [ksoftirqd/0]
+     5 ?        S<     0:00 [kworker/0:0H]
+     7 ?        S      0:01 [migration/0]
+     8 ?        S      0:00 [rcu_bh]
+     9 ?        S      1:43 [rcu_sched]
+    10 ?        S<     0:00 [lru-add-drain]
+    11 ?        S      0:00 [watchdog/0]
+    12 ?        S      0:00 [watchdog/1]
+    13 ?        S      0:10 [migration/1]
+    14 ?        S      0:03 [ksoftirqd/1]
+    16 ?        S<     0:00 [kworker/1:0H]
+    17 ?        S      0:00 [watchdog/2]
+    18 ?        S      0:00 [migration/2]
+    19 ?        S      0:03 [ksoftirqd/2]
+    21 ?        S<     0:00 [kworker/2:0H]
+    22 ?        S      0:00 [watchdog/3]
+    23 ?        S      0:10 [migration/3]
+    24 ?        S      0:03 [ksoftirqd/3]
+    26 ?        S<     0:00 [kworker/3:0H]
+    28 ?        S      0:00 [kdevtmpfs]
+    29 ?        S<     0:00 [netns]
+    30 ?        S      0:00 [khungtaskd]
+    31 ?        S<     0:00 [writeback]
+    32 ?        S<     0:00 [kintegrityd]
+    33 ?        S<     0:00 [bioset]
+    34 ?        S<     0:00 [kblockd]
+    35 ?        S<     0:00 [md]
+    36 ?        S<     0:00 [edac-poller]
+    42 ?        S      0:09 [kswapd0]
+    43 ?        SN     0:00 [ksmd]
+    44 ?        SN     0:01 [khugepaged]
+    45 ?        S<     0:00 [crypto]
+    53 ?        S<     0:00 [kthrotld]
+    55 ?        S<     0:00 [kmpath_rdacd]
+    56 ?        S<     0:00 [kaluad]
+    58 ?        S<     0:00 [kpsmoused]
+    60 ?        S<     0:00 [ipv6_addrconf]
+    74 ?        S<     0:00 [deferwq]
+   108 ?        S      0:00 [kauditd]
+   293 ?        S<     0:00 [ata_sff]
+   295 ?        S      0:00 [scsi_eh_0]
+   296 ?        S<     0:00 [scsi_tmf_0]
+   300 ?        S      0:00 [scsi_eh_1]
+   302 ?        S<     0:00 [scsi_tmf_1]
+   303 ?        S<     0:00 [mpt_poll_0]
+   305 ?        S<     0:00 [mpt/0]
+   309 ?        S      0:00 [scsi_eh_2]
+   310 ?        S<     0:00 [scsi_tmf_2]
+   312 ?        S<     0:00 [ttm_swap]
+   313 ?        S      0:00 [irq/16-vmwgfx]
+   389 ?        S<     0:00 [kdmflush]
+   390 ?        S<     0:00 [bioset]
+   401 ?        S<     0:00 [kdmflush]
+   402 ?        S<     0:00 [bioset]
+   415 ?        S<     0:00 [bioset]
+   416 ?        S<     0:00 [xfsalloc]
+   417 ?        S<     0:00 [xfs_mru_cache]
+   418 ?        S<     0:00 [xfs-buf/dm-0]
+   419 ?        S<     0:00 [xfs-data/dm-0]
+   420 ?        S<     0:00 [xfs-conv/dm-0]
+   421 ?        S<     0:00 [xfs-cil/dm-0]
+   422 ?        S<     0:00 [xfs-reclaim/dm-]
+   423 ?        S<     0:00 [xfs-log/dm-0]
+   424 ?        S<     0:00 [xfs-eofblocks/d]
+   425 ?        S      0:19 [xfsaild/dm-0]
+   426 ?        S<     0:00 [kworker/3:1H]
+   499 ?        S<     0:00 [kworker/2:1H]
+   500 ?        S<     0:00 [kworker/0:1H]
+   501 ?        Ss     0:08 /usr/lib/systemd/systemd-journald
+   528 ?        Ss     0:00 /usr/sbin/lvmetad -f
+   539 ?        Ss     0:03 /usr/lib/systemd/systemd-udevd
+   567 ?        S<     0:00 [nfit]
+   634 ?        S<     0:00 [xfs-buf/sda1]
+   635 ?        S<     0:00 [xfs-data/sda1]
+   636 ?        S<     0:00 [xfs-conv/sda1]
+   637 ?        S<     0:00 [xfs-cil/sda1]
+   638 ?        S<     0:00 [xfs-reclaim/sda]
+   639 ?        S<     0:00 [xfs-log/sda1]
+   640 ?        S<     0:00 [xfs-eofblocks/s]
+   641 ?        S      0:00 [xfsaild/sda1]
+   661 ?        S<     0:00 [kworker/1:1H]
+   689 ?        S<     0:00 [rpciod]
+   690 ?        S<     0:00 [xprtiod]
+   692 ?        S<sl   0:00 /sbin/auditd
+   694 ?        S<sl   0:01 /sbin/audispd
+   696 ?        S<     0:00 /usr/sbin/sedispatch
+   718 ?        Ss     0:15 /usr/sbin/irqbalance --foreground
+   720 ?        Ssl   13:21 /usr/libexec/accounts-daemon
+   722 ?        Ssl   60:07 /usr/lib/polkit-1/polkitd --no-debug
+   724 ?        Ssl    0:00 /usr/sbin/ModemManager
+   725 ?        Ss     0:12 /sbin/rngd -f
+   726 ?        Ss     0:00 /usr/bin/VGAuthService -s
+   727 ?        Ssl    3:15 /usr/bin/vmtoolsd
+   728 ?        SNs    0:00 /usr/sbin/alsactl -s -n 19 -c -E ALSA_CONFIG_PATH=/etc/alsa/alsactl.conf --initfile=/lib/alsa/init/00main rdaemon
+   729 ?        Ss     0:00 avahi-daemon: running [wsx.local]
+   730 ?        Ssl   19:31 /usr/bin/dbus-daemon --system --address=systemd: --nofork --nopidfile --systemd-activation
+   731 ?        Ss     0:00 /sbin/rpcbind -w
+   735 ?        S      0:00 avahi-daemon: chroot helper
+   736 ?        Ssl    0:00 /usr/sbin/gssproxy -D
+   766 ?        Ss     0:00 /usr/sbin/abrtd -d -s
+   768 ?        Ss     0:00 /usr/bin/abrt-watch-log -F Backtrace /var/log/Xorg.0.log -- /usr/bin/abrt-dump-xorg -xD
+   769 ?        Ss     0:00 /usr/bin/abrt-watch-log -F BUG: WARNING: at WARNING: CPU: INFO: possible recursive locking detected ernel BUG at list_del corruption list_add corruption do_IRQ: stack overflow: ear stack overflow (cur: eneral protection fault nable to handle kernel ouble fault: RTNL: assertion failed eek! page_mapcount(page) went negative! adness at NETDEV WATCHDOG ysctl table check failed : nobody cared IRQ handler type mismatch Kernel panic - not syncing: Machine Check Exception: Machine check events logged divide error: bounds: coprocessor segment overrun: invalid TSS: segment not present: invalid opcode: alignment check: stack segment: fpu exception: simd exception: iret exception: /var/log/messages -- /usr/bin/abrt-dump-oops -xtD
+   774 ?        Ss     0:00 /usr/sbin/smartd -n -q never
+   776 ?        Ss     0:00 /usr/bin/lsmd -d
+   778 ?        Ss     0:04 /usr/lib/systemd/systemd-logind
+   780 ?        SNsl   0:05 /usr/libexec/rtkit-daemon
+   781 ?        Ssl    0:01 /usr/libexec/udisks2/udisksd
+   796 ?        S      0:05 /bin/bash /usr/sbin/ksmtuned
+   815 ?        Ssl    0:03 /usr/bin/python -Es /usr/sbin/firewalld --nofork --nopid
+   824 ?        Ssl    0:11 /usr/sbin/NetworkManager --no-daemon
+  1158 ?        Ssl    0:20 /usr/bin/python -Es /usr/sbin/tuned -l -P
+  1161 ?        Ss     0:00 /usr/sbin/sshd -D
+  1163 ?        Ssl    0:11 /usr/sbin/rsyslogd -n
+  1166 ?        Ss     0:00 /usr/sbin/cupsd -f
+  1172 ?        Ssl    0:01 /usr/sbin/libvirtd
+  1178 ?        Ss     0:00 /usr/sbin/atd -f
+  1184 ?        Ss     0:01 /usr/sbin/crond -n
+  1185 ?        Ssl    0:00 /usr/sbin/gdm
+  1337 tty1     Ssl+   0:20 /usr/bin/X :0 -background none -noreset -audit 4 -verbose -auth /run/gdm/auth-for-gdm-dLjgSV/database -seat seat0 -nolisten tcp vt1
+  1388 ?        Ss     0:02 /usr/libexec/postfix/master -w
+  1390 ?        S      0:00 qmgr -l -t unix -u
+  1702 ?        Ssl    0:00 /usr/libexec/upowerd
+  1774 ?        Ssl    0:09 /usr/libexec/packagekitd
+  1787 ?        Ss     0:01 /usr/sbin/wpa_supplicant -u -f /var/log/wpa_supplicant.log -c /etc/wpa_supplicant/wpa_supplicant.conf -P /var/run/wpa_supplicant.pid
+  1862 ?        Ssl    0:00 /usr/libexec/colord
+  2011 ?        S      0:01 /usr/sbin/dnsmasq --conf-file=/var/lib/libvirt/dnsmasq/default.conf --leasefile-ro --dhcp-script=/usr/libexec/libvirt_leaseshelper
+  2012 ?        S      0:00 /usr/sbin/dnsmasq --conf-file=/var/lib/libvirt/dnsmasq/default.conf --leasefile-ro --dhcp-script=/usr/libexec/libvirt_leaseshelper
+  2059 ?        Sl     0:00 gdm-session-worker [pam/gdm-password]
+  2071 ?        Sl     0:00 /usr/bin/gnome-keyring-daemon --daemonize --login
+  2076 ?        Sl     0:03 ibus-daemon --xim --panel disable
+  2081 ?        Sl     0:00 /usr/libexec/ibus-dconf
+  2085 ?        Sl     0:01 /usr/libexec/ibus-x11 --kill-daemon
+  2092 ?        Ssl    0:01 /usr/libexec/gnome-session-binary --session gnome-classic
+  2103 ?        S      0:00 dbus-launch --sh-syntax --exit-with-session
+  2104 ?        Ssl    0:01 /usr/bin/dbus-daemon --fork --print-pid 5 --print-address 7 --session
+  2167 ?        Sl     0:00 /usr/libexec/imsettings-daemon
+  2171 ?        Sl     0:00 /usr/libexec/gvfsd
+  2176 ?        Sl     0:00 /usr/libexec/gvfsd-fuse /run/user/1000/gvfs -f -o big_writes
+  2271 ?        Ss     0:01 /usr/bin/ssh-agent /bin/sh -c exec -l /bin/bash -c "env GNOME_SHELL_SESSION_MODE=classic gnome-session --session gnome-classic"
+  2289 ?        Sl     0:00 /usr/libexec/at-spi-bus-launcher
+  2294 ?        Sl     0:00 /bin/dbus-daemon --config-file=/usr/share/defaults/at-spi2/accessibility.conf --nofork --print-address 3
+  2297 ?        Sl     0:00 /usr/libexec/at-spi2-registryd --use-gnome-session
+  2330 ?        Sl     2:12 /usr/bin/gnome-shell
+  2343 ?        S<l    0:03 /usr/bin/pulseaudio --start --log-target=syslog
+  2389 ?        Sl     0:00 /usr/libexec/xdg-permission-store
+  2391 ?        Sl     0:00 /usr/libexec/gnome-shell-calendar-server
+  2398 ?        Ssl    0:03 /usr/libexec/geoclue -t 5
+  2405 ?        Sl     0:01 /usr/libexec/mission-control-5
+  2411 ?        Sl     0:00 /usr/libexec/evolution-source-registry
+  2413 ?        Sl     0:02 /usr/libexec/gvfs-udisks2-volume-monitor
+  2420 ?        Sl     0:01 /usr/libexec/goa-daemon
+  2429 ?        Sl     0:00 /usr/libexec/gvfs-afc-volume-monitor
+  2444 ?        Sl     0:11 /usr/libexec/goa-identity-service
+  2449 ?        Sl     0:00 /usr/libexec/gvfs-gphoto2-volume-monitor
+  2488 ?        Sl     0:00 /usr/libexec/gvfs-mtp-volume-monitor
+  2495 ?        Sl     0:00 /usr/libexec/gvfs-goa-volume-monitor
+  2501 ?        Sl     4:45 /usr/libexec/gsd-account
+  2507 ?        Sl     0:00 /usr/libexec/gsd-mouse
+  2508 ?        Sl     0:01 /usr/libexec/gsd-power
+  2510 ?        Sl     0:00 /usr/libexec/gsd-print-notifications
+  2513 ?        Sl     0:00 /usr/libexec/gsd-rfkill
+  2515 ?        Sl     0:00 /usr/libexec/gsd-screensaver-proxy
+  2519 ?        Sl     0:00 /usr/libexec/gsd-smartcard
+  2521 ?        Sl     0:00 /usr/libexec/gsd-wacom
+  2527 ?        Sl     0:00 /usr/libexec/gsd-xsettings
+  2531 ?        Sl     0:00 /usr/libexec/gsd-sound
+  2534 ?        Sl     0:01 /usr/libexec/gsd-sharing
+  2548 ?        Sl     0:00 /usr/libexec/gsd-a11y-keyboard
+  2549 ?        Sl     0:00 /usr/libexec/gsd-a11y-settings
+  2550 ?        Sl     0:00 /usr/libexec/gsd-clipboard
+  2552 ?        Sl     0:36 /usr/libexec/gsd-color
+  2555 ?        Sl     0:00 /usr/libexec/gsd-datetime
+  2557 ?        Sl     0:06 /usr/libexec/gsd-housekeeping
+  2558 ?        Sl     0:00 /usr/libexec/gsd-keyboard
+  2560 ?        Sl     0:01 /usr/libexec/gsd-media-keys
+  2590 ?        Sl     0:00 /usr/libexec/gsd-printer
+  2617 ?        Sl     0:02 nautilus-desktop --force
+  2647 ?        Sl     0:00 /usr/libexec/gvfsd-trash --spawner :1.3 /org/gtk/gvfs/exec_spaw/0
+  2651 ?        Sl     0:00 /usr/libexec/evolution-calendar-factory
+  2666 ?        Sl     0:24 /usr/bin/gnome-software --gapplication-service
+  2670 ?        S      3:07 /usr/bin/vmtoolsd -n vmusr
+  2690 ?        Sl     0:02 abrt-applet
+  2695 ?        Sl     0:00 /usr/libexec/tracker-store
+  2710 ?        SNl    0:00 /usr/libexec/tracker-extract
+  2749 ?        SNl    0:00 /usr/libexec/tracker-miner-apps
+  2778 ?        SNl    0:00 /usr/libexec/tracker-miner-fs
+  2780 ?        SNl    0:00 /usr/libexec/tracker-miner-user-guides
+  2788 ?        S      0:00 /usr/bin/seapplet
+  3042 ?        Sl     0:07 /usr/bin/ibus-daemon -r --xim
+  3044 ?        Sl     0:00 /usr/libexec/dconf-service
+  3049 ?        Sl     0:00 /usr/libexec/ibus-dconf
+  3052 ?        Sl     0:01 /usr/libexec/ibus-ui-gtk3
+  3061 ?        Sl     0:00 /usr/libexec/ibus-x11 --kill-daemon
+  3068 ?        Sl     0:00 /usr/libexec/ibus-portal
+  3083 ?        Sl     0:01 /usr/libexec/ibus-engine-simple
+  3130 ?        Sl     0:02 /usr/libexec/evolution-calendar-factory-subprocess --factory local --bus-name org.gnome.evolution.dataserver.Subprocess.Backend.Calendarx2651x2 --own-path /org/gnome/evolution/dataserver/Subprocess/Backend/Calendar/2651/2
+  3139 ?        Sl     0:02 /usr/libexec/evolution-calendar-factory-subprocess --factory contacts --bus-name org.gnome.evolution.dataserver.Subprocess.Backend.Calendarx2651x3 --own-path /org/gnome/evolution/dataserver/Subprocess/Backend/Calendar/2651/3
+  3150 ?        Sl     0:00 /usr/libexec/evolution-addressbook-factory
+  3164 ?        Sl     0:02 /usr/libexec/evolution-addressbook-factory-subprocess --factory local --bus-name org.gnome.evolution.dataserver.Subprocess.Backend.AddressBookx3150x2 --own-path /org/gnome/evolution/dataserver/Subprocess/Backend/AddressBook/3150/2
+  3186 ?        Sl     0:00 /usr/libexec/gvfsd-metadata
+  3200 ?        Sl     0:08 /usr/libexec/gnome-terminal-server
+  3208 ?        S      0:00 gnome-pty-helper
+  3209 pts/0    Ss+    0:00 bash
+ 11957 ?        Ssl    0:00 /home/jack/.VimForCpp/nvim nfork.c
+ 11964 ?        Ssl    0:00 /home/jack/.VimForCpp/vim/bundle/LanguageClient-neovim/bin/languageclient
+ 11977 ?        Z      0:00 [querydb] <defunct>
+ 12551 ?        S      0:01 [kworker/u256:0]
+ 17086 ?        S      0:00 pickup -l -t unix -u
+ 32176 ?        S      0:00 [kworker/2:0]
+ 34664 ?        S      0:00 [kworker/u256:2]
+ 35970 ?        S      0:00 [kworker/0:0]
+ 41074 ?        S      0:00 [kworker/3:1]
+ 42769 ?        S      0:00 [kworker/u256:1]
+ 46548 ?        S      0:00 [kworker/2:2]
+ 48160 ?        S      0:00 [kworker/3:2]
+ 50080 ?        S      0:00 [kworker/u256:3]
+ 51120 ?        S      0:00 [kworker/0:2]
+ 52009 ?        S      0:00 sleep 60
+ 52056 pts/2    R+     0:00 ps ax
+ 58980 ?        S      0:04 [kworker/2:1]
+ 73436 ?        S      0:00 /sbin/dhclient -d -q -sf /usr/libexec/nm-dhcp-helper -pf /var/run/dhclient-ens33.pid -lf /var/lib/NetworkManager/dhclient-479feff3-df7f-4225-9572-2fda0a71d554-ens33.lease -cf /var/lib/NetworkManager/dhclient-ens33.conf ens33
+ 74026 ?        S      0:02 [kworker/1:0]
+ 75913 ?        Ss     0:00 sshd: jack [priv]
+ 76251 ?        S      0:01 sshd: jack@pts/2
+ 76264 pts/2    Ss     0:00 -bash
+ 97779 ?        S      0:00 [kworker/3:0]
+103671 ?        S      0:00 [kworker/1:1]
+104600 ?        S      0:00 [kworker/0:1]

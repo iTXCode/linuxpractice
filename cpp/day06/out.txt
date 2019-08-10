@@ -1,0 +1,231 @@
+USER        PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root          1  0.0  0.2 193816  4920 ?        Ss   8月01   0:16 /usr/lib/systemd/systemd --switched-root --system --deserialize 22
+root          2  0.0  0.0      0     0 ?        S    8月01   0:00 [kthreadd]
+root          3  0.0  0.0      0     0 ?        S    8月01   0:00 [ksoftirqd/0]
+root          5  0.0  0.0      0     0 ?        S<   8月01   0:00 [kworker/0:0H]
+root          7  0.0  0.0      0     0 ?        S    8月01   0:01 [migration/0]
+root          8  0.0  0.0      0     0 ?        S    8月01   0:00 [rcu_bh]
+root          9  0.0  0.0      0     0 ?        S    8月01   1:02 [rcu_sched]
+root         10  0.0  0.0      0     0 ?        S<   8月01   0:00 [lru-add-drain]
+root         11  0.0  0.0      0     0 ?        S    8月01   0:00 [watchdog/0]
+root         12  0.0  0.0      0     0 ?        S    8月01   0:00 [watchdog/1]
+root         13  0.0  0.0      0     0 ?        S    8月01   0:05 [migration/1]
+root         14  0.0  0.0      0     0 ?        S    8月01   0:02 [ksoftirqd/1]
+root         16  0.0  0.0      0     0 ?        S<   8月01   0:00 [kworker/1:0H]
+root         17  0.0  0.0      0     0 ?        S    8月01   0:00 [watchdog/2]
+root         18  0.0  0.0      0     0 ?        S    8月01   0:00 [migration/2]
+root         19  0.0  0.0      0     0 ?        S    8月01   0:03 [ksoftirqd/2]
+root         21  0.0  0.0      0     0 ?        S<   8月01   0:00 [kworker/2:0H]
+root         22  0.0  0.0      0     0 ?        S    8月01   0:00 [watchdog/3]
+root         23  0.0  0.0      0     0 ?        S    8月01   0:05 [migration/3]
+root         24  0.0  0.0      0     0 ?        S    8月01   0:02 [ksoftirqd/3]
+root         26  0.0  0.0      0     0 ?        S<   8月01   0:00 [kworker/3:0H]
+root         28  0.0  0.0      0     0 ?        S    8月01   0:00 [kdevtmpfs]
+root         29  0.0  0.0      0     0 ?        S<   8月01   0:00 [netns]
+root         30  0.0  0.0      0     0 ?        S    8月01   0:00 [khungtaskd]
+root         31  0.0  0.0      0     0 ?        S<   8月01   0:00 [writeback]
+root         32  0.0  0.0      0     0 ?        S<   8月01   0:00 [kintegrityd]
+root         33  0.0  0.0      0     0 ?        S<   8月01   0:00 [bioset]
+root         34  0.0  0.0      0     0 ?        S<   8月01   0:00 [kblockd]
+root         35  0.0  0.0      0     0 ?        S<   8月01   0:00 [md]
+root         36  0.0  0.0      0     0 ?        S<   8月01   0:00 [edac-poller]
+root         42  0.0  0.0      0     0 ?        S    8月01   0:09 [kswapd0]
+root         43  0.0  0.0      0     0 ?        SN   8月01   0:00 [ksmd]
+root         44  0.0  0.0      0     0 ?        SN   8月01   0:01 [khugepaged]
+root         45  0.0  0.0      0     0 ?        S<   8月01   0:00 [crypto]
+root         53  0.0  0.0      0     0 ?        S<   8月01   0:00 [kthrotld]
+root         55  0.0  0.0      0     0 ?        S<   8月01   0:00 [kmpath_rdacd]
+root         56  0.0  0.0      0     0 ?        S<   8月01   0:00 [kaluad]
+root         58  0.0  0.0      0     0 ?        S<   8月01   0:00 [kpsmoused]
+root         60  0.0  0.0      0     0 ?        S<   8月01   0:00 [ipv6_addrconf]
+root         74  0.0  0.0      0     0 ?        S<   8月01   0:00 [deferwq]
+root        108  0.0  0.0      0     0 ?        S    8月01   0:00 [kauditd]
+root        293  0.0  0.0      0     0 ?        S<   8月01   0:00 [ata_sff]
+root        295  0.0  0.0      0     0 ?        S    8月01   0:00 [scsi_eh_0]
+root        296  0.0  0.0      0     0 ?        S<   8月01   0:00 [scsi_tmf_0]
+root        300  0.0  0.0      0     0 ?        S    8月01   0:00 [scsi_eh_1]
+root        302  0.0  0.0      0     0 ?        S<   8月01   0:00 [scsi_tmf_1]
+root        303  0.0  0.0      0     0 ?        S<   8月01   0:00 [mpt_poll_0]
+root        305  0.0  0.0      0     0 ?        S<   8月01   0:00 [mpt/0]
+root        309  0.0  0.0      0     0 ?        S    8月01   0:00 [scsi_eh_2]
+root        310  0.0  0.0      0     0 ?        S<   8月01   0:00 [scsi_tmf_2]
+root        312  0.0  0.0      0     0 ?        S<   8月01   0:00 [ttm_swap]
+root        313  0.0  0.0      0     0 ?        S    8月01   0:00 [irq/16-vmwgfx]
+root        389  0.0  0.0      0     0 ?        S<   8月01   0:00 [kdmflush]
+root        390  0.0  0.0      0     0 ?        S<   8月01   0:00 [bioset]
+root        401  0.0  0.0      0     0 ?        S<   8月01   0:00 [kdmflush]
+root        402  0.0  0.0      0     0 ?        S<   8月01   0:00 [bioset]
+root        415  0.0  0.0      0     0 ?        S<   8月01   0:00 [bioset]
+root        416  0.0  0.0      0     0 ?        S<   8月01   0:00 [xfsalloc]
+root        417  0.0  0.0      0     0 ?        S<   8月01   0:00 [xfs_mru_cache]
+root        418  0.0  0.0      0     0 ?        S<   8月01   0:00 [xfs-buf/dm-0]
+root        419  0.0  0.0      0     0 ?        S<   8月01   0:00 [xfs-data/dm-0]
+root        420  0.0  0.0      0     0 ?        S<   8月01   0:00 [xfs-conv/dm-0]
+root        421  0.0  0.0      0     0 ?        S<   8月01   0:00 [xfs-cil/dm-0]
+root        422  0.0  0.0      0     0 ?        S<   8月01   0:00 [xfs-reclaim/dm-]
+root        423  0.0  0.0      0     0 ?        S<   8月01   0:00 [xfs-log/dm-0]
+root        424  0.0  0.0      0     0 ?        S<   8月01   0:00 [xfs-eofblocks/d]
+root        425  0.0  0.0      0     0 ?        S    8月01   0:17 [xfsaild/dm-0]
+root        426  0.0  0.0      0     0 ?        S<   8月01   0:00 [kworker/3:1H]
+root        499  0.0  0.0      0     0 ?        S<   8月01   0:00 [kworker/2:1H]
+root        500  0.0  0.0      0     0 ?        S<   8月01   0:00 [kworker/0:1H]
+root        501  0.0  0.4  39796  7556 ?        Ss   8月01   0:08 /usr/lib/systemd/systemd-journald
+root        528  0.0  0.0 127256   860 ?        Ss   8月01   0:00 /usr/sbin/lvmetad -f
+root        539  0.0  0.0  48728  1348 ?        Ss   8月01   0:02 /usr/lib/systemd/systemd-udevd
+root        567  0.0  0.0      0     0 ?        S<   8月01   0:00 [nfit]
+root        634  0.0  0.0      0     0 ?        S<   8月01   0:00 [xfs-buf/sda1]
+root        635  0.0  0.0      0     0 ?        S<   8月01   0:00 [xfs-data/sda1]
+root        636  0.0  0.0      0     0 ?        S<   8月01   0:00 [xfs-conv/sda1]
+root        637  0.0  0.0      0     0 ?        S<   8月01   0:00 [xfs-cil/sda1]
+root        638  0.0  0.0      0     0 ?        S<   8月01   0:00 [xfs-reclaim/sda]
+root        639  0.0  0.0      0     0 ?        S<   8月01   0:00 [xfs-log/sda1]
+root        640  0.0  0.0      0     0 ?        S<   8月01   0:00 [xfs-eofblocks/s]
+root        641  0.0  0.0      0     0 ?        S    8月01   0:00 [xfsaild/sda1]
+root        661  0.0  0.0      0     0 ?        S<   8月01   0:00 [kworker/1:1H]
+root        689  0.0  0.0      0     0 ?        S<   8月01   0:00 [rpciod]
+root        690  0.0  0.0      0     0 ?        S<   8月01   0:00 [xprtiod]
+root        692  0.0  0.0  55508   660 ?        S<sl 8月01   0:00 /sbin/auditd
+root        694  0.0  0.0  84552   868 ?        S<sl 8月01   0:01 /sbin/audispd
+root        696  0.0  0.0  55596   880 ?        S<   8月01   0:00 /usr/sbin/sedispatch
+root        718  0.0  0.0  21668   976 ?        Ss   8月01   0:14 /usr/sbin/irqbalance --foreground
+root        720  0.3  0.1 396500  2724 ?        Ssl  8月01   7:15 /usr/libexec/accounts-daemon
+polkitd     722  1.7  0.8 649800 15284 ?        Ssl  8月01  32:44 /usr/lib/polkit-1/polkitd --no-debug
+root        724  0.0  0.2 430540  4060 ?        Ssl  8月01   0:00 /usr/sbin/ModemManager
+root        725  0.0  0.0  13216   496 ?        Ss   8月01   0:11 /sbin/rngd -f
+root        726  0.0  0.1  99656  2036 ?        Ss   8月01   0:00 /usr/bin/VGAuthService -s
+root        727  0.1  0.1 320252  3628 ?        Ssl  8月01   2:50 /usr/bin/vmtoolsd
+root        728  0.0  0.0  16884   860 ?        SNs  8月01   0:00 /usr/sbin/alsactl -s -n 19 -c -E ALSA_CONFIG_PATH=/etc/alsa/alsactl.conf --initfile=/lib/alsa/init/00main rdaemon
+avahi       729  0.0  0.0  62232  1636 ?        Ss   8月01   0:00 avahi-daemon: running [wsx.local]
+dbus        730  0.5  0.1  70200  3688 ?        Ssl  8月01  10:41 /usr/bin/dbus-daemon --system --address=systemd: --nofork --nopidfile --systemd-activation
+rpc         731  0.0  0.0  69220   520 ?        Ss   8月01   0:00 /sbin/rpcbind -w
+avahi       735  0.0  0.0  62112    28 ?        S    8月01   0:00 avahi-daemon: chroot helper
+root        736  0.0  0.0 201300   592 ?        Ssl  8月01   0:00 /usr/sbin/gssproxy -D
+root        766  0.0  0.1 223928  2328 ?        Ss   8月01   0:00 /usr/sbin/abrtd -d -s
+root        768  0.0  0.0 221312  1440 ?        Ss   8月01   0:00 /usr/bin/abrt-watch-log -F Backtrace /var/log/Xorg.0.log -- /usr/bin/abrt-dump-xorg -xD
+root        769  0.0  0.0 221312  1444 ?        Ss   8月01   0:00 /usr/bin/abrt-watch-log -F BUG: WARNING: at WARNING: CPU: INFO: possible recursive locking detected ernel BUG at list_del corruption list_add corruption do_IRQ: stack overflow: ear stack overflow (cur: eneral protection fault nable to handle kernel ouble fault: RTNL: assertion failed eek! page_mapcount(page) went negative! adness at NETDEV WATCHDOG ysctl table check failed : nobody cared IRQ handler type mismatch Kernel panic - not syncing: Machine Check Exception: Machine check events logged divide error: bounds: coprocessor segment overrun: invalid TSS: segment not present: invalid opcode: alignment check: stack segment: fpu exception: simd exception: iret exception: /var/log/messages -- /usr/bin/abrt-dump-oops -xtD
+root        774  0.0  0.0  24496   868 ?        Ss   8月01   0:00 /usr/sbin/smartd -n -q never
+libstor+    776  0.0  0.0   8576   664 ?        Ss   8月01   0:00 /usr/bin/lsmd -d
+root        778  0.0  0.0  26424  1592 ?        Ss   8月01   0:04 /usr/lib/systemd/systemd-logind
+rtkit       780  0.0  0.0 198760  1264 ?        SNsl 8月01   0:04 /usr/libexec/rtkit-daemon
+root        781  0.0  0.1 446688  3240 ?        Ssl  8月01   0:01 /usr/libexec/udisks2/udisksd
+root        796  0.0  0.0 115300   876 ?        S    8月01   0:05 /bin/bash /usr/sbin/ksmtuned
+root        815  0.0  0.4 358104  8180 ?        Ssl  8月01   0:03 /usr/bin/python -Es /usr/sbin/firewalld --nofork --nopid
+root        824  0.0  0.3 566316  6904 ?        Ssl  8月01   0:11 /usr/sbin/NetworkManager --no-daemon
+root       1158  0.0  0.2 573820  5236 ?        Ssl  8月01   0:17 /usr/bin/python -Es /usr/sbin/tuned -l -P
+root       1161  0.0  0.1 112796  2768 ?        Ss   8月01   0:00 /usr/sbin/sshd -D
+root       1163  0.0  0.4 222716  7868 ?        Ssl  8月01   0:10 /usr/sbin/rsyslogd -n
+root       1166  0.0  0.1 197932  2772 ?        Ss   8月01   0:00 /usr/sbin/cupsd -f
+root       1172  0.0  0.4 699848  7892 ?        Ssl  8月01   0:00 /usr/sbin/libvirtd
+root       1178  0.0  0.0  25904   624 ?        Ss   8月01   0:00 /usr/sbin/atd -f
+root       1184  0.0  0.0 126284  1056 ?        Ss   8月01   0:01 /usr/sbin/crond -n
+root       1185  0.0  0.1 481388  2820 ?        Ssl  8月01   0:00 /usr/sbin/gdm
+root       1337  0.0  1.3 348388 25572 tty1     Ssl+ 8月01   0:20 /usr/bin/X :0 -background none -noreset -audit 4 -verbose -auth /run/gdm/auth-for-gdm-dLjgSV/database -seat seat0 -nolisten tcp vt1
+root       1388  0.0  0.0  91704  1132 ?        Ss   8月01   0:01 /usr/libexec/postfix/master -w
+postfix    1390  0.0  0.1  91876  2308 ?        S    8月01   0:00 qmgr -l -t unix -u
+root       1702  0.0  0.1 430276  2976 ?        Ssl  8月01   0:00 /usr/libexec/upowerd
+root       1774  0.0  0.4 414880  9240 ?        Ssl  8月01   0:09 /usr/libexec/packagekitd
+root       1787  0.0  0.1  78616  2636 ?        Ss   8月01   0:00 /usr/sbin/wpa_supplicant -u -f /var/log/wpa_supplicant.log -c /etc/wpa_supplicant/wpa_supplicant.conf -P /var/run/wpa_supplicant.pid
+colord     1862  0.0  0.3 419592  6016 ?        Ssl  8月01   0:00 /usr/libexec/colord
+nobody     2011  0.0  0.0  53852  1028 ?        S    8月01   0:01 /usr/sbin/dnsmasq --conf-file=/var/lib/libvirt/dnsmasq/default.conf --leasefile-ro --dhcp-script=/usr/libexec/libvirt_leaseshelper
+root       2012  0.0  0.0  53824   376 ?        S    8月01   0:00 /usr/sbin/dnsmasq --conf-file=/var/lib/libvirt/dnsmasq/default.conf --leasefile-ro --dhcp-script=/usr/libexec/libvirt_leaseshelper
+root       2059  0.0  0.2 535656  4500 ?        Sl   8月01   0:00 gdm-session-worker [pam/gdm-password]
+jack       2071  0.0  0.1 317500  2640 ?        Sl   8月01   0:00 /usr/bin/gnome-keyring-daemon --daemonize --login
+gdm        2076  0.0  0.1 452368  2704 ?        Sl   8月01   0:03 ibus-daemon --xim --panel disable
+gdm        2081  0.0  0.1 376044  2064 ?        Sl   8月01   0:00 /usr/libexec/ibus-dconf
+gdm        2085  0.0  0.3 484676  7184 ?        Sl   8月01   0:01 /usr/libexec/ibus-x11 --kill-daemon
+jack       2092  0.0  0.2 844736  5256 ?        Ssl  8月01   0:01 /usr/libexec/gnome-session-binary --session gnome-classic
+jack       2103  0.0  0.0  58860   820 ?        S    8月01   0:00 dbus-launch --sh-syntax --exit-with-session
+jack       2104  0.0  0.1  69240  2488 ?        Ssl  8月01   0:01 /usr/bin/dbus-daemon --fork --print-pid 5 --print-address 7 --session
+jack       2167  0.0  0.2 389648  4552 ?        Sl   8月01   0:00 /usr/libexec/imsettings-daemon
+jack       2171  0.0  0.1 388788  2428 ?        Sl   8月01   0:00 /usr/libexec/gvfsd
+jack       2176  0.0  0.2 417772  4192 ?        Sl   8月01   0:00 /usr/libexec/gvfsd-fuse /run/user/1000/gvfs -f -o big_writes
+jack       2271  0.0  0.0  72384   776 ?        Ss   8月01   0:00 /usr/bin/ssh-agent /bin/sh -c exec -l /bin/bash -c "env GNOME_SHELL_SESSION_MODE=classic gnome-session --session gnome-classic"
+jack       2289  0.0  0.1 346728  2328 ?        Sl   8月01   0:00 /usr/libexec/at-spi-bus-launcher
+jack       2294  0.0  0.1  68368  2120 ?        Sl   8月01   0:00 /bin/dbus-daemon --config-file=/usr/share/defaults/at-spi2/accessibility.conf --nofork --print-address 3
+jack       2297  0.0  0.1 233036  2532 ?        Sl   8月01   0:00 /usr/libexec/at-spi2-registryd --use-gnome-session
+jack       2330  0.1  9.4 3979508 176240 ?      Sl   8月01   2:05 /usr/bin/gnome-shell
+jack       2343  0.0  0.2 1285572 4988 ?        S<l  8月01   0:03 /usr/bin/pulseaudio --start --log-target=syslog
+jack       2389  0.0  0.2 424720  5172 ?        Sl   8月01   0:00 /usr/libexec/xdg-permission-store
+jack       2391  0.0  0.7 908140 13084 ?        Sl   8月01   0:00 /usr/libexec/gnome-shell-calendar-server
+geoclue    2398  0.0  0.6 534212 13036 ?        Ssl  8月01   0:02 /usr/libexec/geoclue -t 5
+jack       2405  0.0  0.2 485300  4468 ?        Sl   8月01   0:01 /usr/libexec/mission-control-5
+jack       2411  0.0  0.5 1606780 10492 ?       Sl   8月01   0:00 /usr/libexec/evolution-source-registry
+jack       2413  0.0  0.2 563492  5400 ?        Sl   8月01   0:02 /usr/libexec/gvfs-udisks2-volume-monitor
+jack       2420  0.0  0.4 910244  8600 ?        Sl   8月01   0:01 /usr/libexec/goa-daemon
+jack       2429  0.0  0.2 478552  4564 ?        Sl   8月01   0:00 /usr/libexec/gvfs-afc-volume-monitor
+jack       2444  0.0  0.2 547212  3768 ?        Sl   8月01   0:10 /usr/libexec/goa-identity-service
+jack       2449  0.0  0.1 400656  2376 ?        Sl   8月01   0:00 /usr/libexec/gvfs-gphoto2-volume-monitor
+jack       2488  0.0  0.2 391568  4296 ?        Sl   8月01   0:00 /usr/libexec/gvfs-mtp-volume-monitor
+jack       2495  0.0  0.1 371592  2116 ?        Sl   8月01   0:00 /usr/libexec/gvfs-goa-volume-monitor
+jack       2501  0.1  0.3 611676  5808 ?        Sl   8月01   2:34 /usr/libexec/gsd-account
+jack       2507  0.0  0.2 535652  5432 ?        Sl   8月01   0:00 /usr/libexec/gsd-mouse
+jack       2508  0.0  0.4 651292  8492 ?        Sl   8月01   0:01 /usr/libexec/gsd-power
+jack       2510  0.0  0.2 561092  5188 ?        Sl   8月01   0:00 /usr/libexec/gsd-print-notifications
+jack       2513  0.0  0.1 615336  3312 ?        Sl   8月01   0:00 /usr/libexec/gsd-rfkill
+jack       2515  0.0  0.2 533312  5324 ?        Sl   8月01   0:00 /usr/libexec/gsd-screensaver-proxy
+jack       2519  0.0  0.2 638004  4168 ?        Sl   8月01   0:00 /usr/libexec/gsd-smartcard
+jack       2521  0.0  0.5 640576  9584 ?        Sl   8月01   0:00 /usr/libexec/gsd-wacom
+jack       2527  0.0  0.4 634956  8104 ?        Sl   8月01   0:00 /usr/libexec/gsd-xsettings
+jack       2531  0.0  0.1 577984  3664 ?        Sl   8月01   0:00 /usr/libexec/gsd-sound
+jack       2534  0.0  0.3 563380  5992 ?        Sl   8月01   0:01 /usr/libexec/gsd-sharing
+jack       2548  0.0  0.5 571084  9724 ?        Sl   8月01   0:00 /usr/libexec/gsd-a11y-keyboard
+jack       2549  0.0  0.2 535648  5464 ?        Sl   8月01   0:00 /usr/libexec/gsd-a11y-settings
+jack       2550  0.0  0.3 484372  7256 ?        Sl   8月01   0:00 /usr/libexec/gsd-clipboard
+jack       2552  0.0  0.4 731628  8152 ?        Sl   8月01   0:30 /usr/libexec/gsd-color
+jack       2555  0.0  0.2 571748  4096 ?        Sl   8月01   0:00 /usr/libexec/gsd-datetime
+jack       2557  0.0  0.2 618344  4144 ?        Sl   8月01   0:05 /usr/libexec/gsd-housekeeping
+jack       2558  0.0  0.4 642716  8008 ?        Sl   8月01   0:00 /usr/libexec/gsd-keyboard
+jack       2560  0.0  0.4 1033668 8180 ?        Sl   8月01   0:01 /usr/libexec/gsd-media-keys
+jack       2590  0.0  0.2 630216  4484 ?        Sl   8月01   0:00 /usr/libexec/gsd-printer
+jack       2617  0.0  1.0 1043436 20172 ?       Sl   8月01   0:02 nautilus-desktop --force
+jack       2647  0.0  0.2 464872  4824 ?        Sl   8月01   0:00 /usr/libexec/gvfsd-trash --spawner :1.3 /org/gtk/gvfs/exec_spaw/0
+jack       2651  0.0  2.3 1117168 44220 ?       Sl   8月01   0:00 /usr/libexec/evolution-calendar-factory
+jack       2666  0.0  4.2 1070928 78656 ?       Sl   8月01   0:22 /usr/bin/gnome-software --gapplication-service
+jack       2670  0.1  0.4 402664  8036 ?        S    8月01   2:43 /usr/bin/vmtoolsd -n vmusr
+jack       2690  0.0  0.5 545892 10924 ?        Sl   8月01   0:02 abrt-applet
+jack       2695  0.0  0.6 526100 12116 ?        Sl   8月01   0:00 /usr/libexec/tracker-store
+jack       2710  0.0  0.4 661212  7876 ?        SNl  8月01   0:00 /usr/libexec/tracker-extract
+jack       2749  0.0  0.3 632992  5896 ?        SNl  8月01   0:00 /usr/libexec/tracker-miner-apps
+jack       2778  0.0  0.3 723380  6064 ?        SNl  8月01   0:00 /usr/libexec/tracker-miner-fs
+jack       2780  0.0  0.2 562492  5276 ?        SNl  8月01   0:00 /usr/libexec/tracker-miner-user-guides
+jack       2788  0.0  0.2 331860  4708 ?        S    8月01   0:00 /usr/bin/seapplet
+jack       3042  0.0  0.2 526892  4216 ?        Sl   8月01   0:06 /usr/bin/ibus-daemon -r --xim
+jack       3044  0.0  0.1 187360  2012 ?        Sl   8月01   0:00 /usr/libexec/dconf-service
+jack       3049  0.0  0.1 376028  2192 ?        Sl   8月01   0:00 /usr/libexec/ibus-dconf
+jack       3052  0.0  0.5 582116  9680 ?        Sl   8月01   0:01 /usr/libexec/ibus-ui-gtk3
+jack       3061  0.0  0.3 484336  6992 ?        Sl   8月01   0:00 /usr/libexec/ibus-x11 --kill-daemon
+jack       3068  0.0  0.1 375992  2032 ?        Sl   8月01   0:00 /usr/libexec/ibus-portal
+jack       3083  0.0  0.1 302356  2408 ?        Sl   8月01   0:01 /usr/libexec/ibus-engine-simple
+jack       3130  0.0  2.4 1056576 45380 ?       Sl   8月01   0:02 /usr/libexec/evolution-calendar-factory-subprocess --factory local --bus-name org.gnome.evolution.dataserver.Subprocess.Backend.Calendarx2651x2 --own-path /org/gnome/evolution/dataserver/Subprocess/Backend/Calendar/2651/2
+jack       3139  0.0  2.3 1284596 43328 ?       Sl   8月01   0:02 /usr/libexec/evolution-calendar-factory-subprocess --factory contacts --bus-name org.gnome.evolution.dataserver.Subprocess.Backend.Calendarx2651x3 --own-path /org/gnome/evolution/dataserver/Subprocess/Backend/Calendar/2651/3
+jack       3150  0.0  0.6 1071924 11936 ?       Sl   8月01   0:00 /usr/libexec/evolution-addressbook-factory
+jack       3164  0.0  0.7 1250800 14156 ?       Sl   8月01   0:02 /usr/libexec/evolution-addressbook-factory-subprocess --factory local --bus-name org.gnome.evolution.dataserver.Subprocess.Backend.AddressBookx3150x2 --own-path /org/gnome/evolution/dataserver/Subprocess/Backend/AddressBook/3150/2
+jack       3186  0.0  0.1 315796  2372 ?        Sl   8月01   0:00 /usr/libexec/gvfsd-metadata
+jack       3200  0.0  1.4 940672 26680 ?        Sl   8月01   0:08 /usr/libexec/gnome-terminal-server
+jack       3208  0.0  0.0   8532   704 ?        S    8月01   0:00 gnome-pty-helper
+jack       3209  0.0  0.1 116864  3176 pts/0    Ss+  8月01   0:00 bash
+jack      11957  0.0  0.0  22028  1160 ?        Ssl  8月01   0:00 /home/jack/.VimForCpp/nvim nfork.c
+jack      11964  0.0  0.1  22952  2940 ?        Ssl  8月01   0:00 /home/jack/.VimForCpp/vim/bundle/LanguageClient-neovim/bin/languageclient
+jack      11977  0.0  0.0      0     0 ?        Z    8月01   0:00 [querydb] <defunct>
+root      16381  0.0  0.0      0     0 ?        S    09:08   0:00 [kworker/1:2]
+root      27193  0.0  0.0      0     0 ?        S    10:48   0:01 [kworker/u256:1]
+root      29827  0.0  0.0      0     0 ?        S    10:50   0:00 [kworker/0:1]
+root      30224  0.0  0.0      0     0 ?        S    09:18   0:06 [kworker/2:0]
+root      55973  0.0  0.0      0     0 ?        S    11:08   0:00 [kworker/u256:2]
+root      58078  0.0  0.0      0     0 ?        S    11:10   0:00 [kworker/0:0]
+root      63225  0.0  0.0      0     0 ?        S    11:13   0:00 [kworker/u256:3]
+root      64658  0.0  0.0      0     0 ?        S    11:15   0:00 [kworker/3:2]
+root      65749  0.0  0.0      0     0 ?        S    11:15   0:00 [kworker/0:2]
+root      70441  0.0  0.0      0     0 ?        S    11:19   0:00 [kworker/u256:0]
+root      71774  0.0  0.0      0     0 ?        S    11:20   0:00 [kworker/2:1]
+root      71812  0.0  0.0      0     0 ?        S    11:20   0:00 [kworker/3:0]
+root      72634  0.0  0.0 107948   348 ?        S    11:20   0:00 sleep 60
+jack      73081  0.0  0.1 155324  1880 pts/2    R+   11:20   0:00 ps aux
+root      73422  0.0  0.0      0     0 ?        S    09:49   0:00 [kworker/2:2]
+root      73436  0.0  0.2 107380  5440 ?        S    09:49   0:00 /sbin/dhclient -d -q -sf /usr/libexec/nm-dhcp-helper -pf /var/run/dhclient-ens33.pid -lf /var/lib/NetworkManager/dhclient-479feff3-df7f-4225-9572-2fda0a71d554-ens33.lease -cf /var/lib/NetworkManager/dhclient-ens33.conf ens33
+postfix   73542  0.0  0.2  91808  4052 ?        S    09:49   0:00 pickup -l -t unix -u
+root      74026  0.0  0.0      0     0 ?        S    09:49   0:00 [kworker/1:0]
+root      75913  0.0  0.2 158740  5480 ?        Ss   09:50   0:00 sshd: jack [priv]
+jack      76251  0.0  0.1 158740  2604 ?        S    09:50   0:00 sshd: jack@pts/2
+jack      76264  0.0  0.1 116872  3556 pts/2    Ss   09:50   0:00 -bash
+root     103314  0.0  0.0      0     0 ?        S    10:09   0:00 [kworker/3:1]
