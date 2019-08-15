@@ -1,0 +1,6 @@
+heheo bit!
+
+find -name test.c > ~/out 2>~/err
+
+替换vim中某个字符的方式
+%s/修改的名字/修改后的名字/g
