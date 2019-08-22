@@ -26,7 +26,8 @@ int main(){
     sleep(1);
   }
   /*
-     int pthread_create(pthread_t *thread, const pthread_attr_t *attr, void *(*start_routine) (void *), void *arg);
+      int pthread_create(pthread_t *thread,
+     const pthread_attr_t *attr, void *(*start_routine) (void *), void *arg);
      参数1:输出型参数
      参数3:函数指针就相当于这个新进程的入口函数,指定了新线程执行那个代码
      入口函数的参数就是pthread_create的第四个参数
