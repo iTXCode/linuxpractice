@@ -9,3 +9,9 @@ thread_cond:thread_cond.c
 
 ModifyCount:ModifyCount.c
 	gcc $^  -o  $@ -std=c99  -lpthread
+
+time:time.c
+	gcc $^ -o $@ -std=c99  
+
+thread_time:thread_time.c
+	gcc $^ -o $@  -std=c99  -lpthread

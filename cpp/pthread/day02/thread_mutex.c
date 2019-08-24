@@ -3,11 +3,9 @@
 #include<unistd.h>
 #include<pthread.h>
 
-
 //线程不安全问题
 //多线程环境下程序执行结果
 //出现逾期之外的值
-
 
 //互斥锁/互斥量
 pthread_mutex_t mutex;
