@@ -35,7 +35,7 @@ int main(){
   pthread_t tid[THREAD_NUM];
   for(int i=0; i < THREAD_NUM ; ++i){
     pthread_create(&tid[i],NULL,ThreadEntry,NULL);
-
+    
   }
   for(int i=0;i<THREAD_NUM;++i){
     pthread_join(tid[i],NULL);

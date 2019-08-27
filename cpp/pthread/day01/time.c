@@ -3,7 +3,50 @@
 一个乘方运算,再赋值回数组
 */
 
-#if 0
+//
+//#include<stdio.h>
+//#include<unistd.h>
+//#include<pthread.h>
+//#include<sys/time.h>
+//#include<stdlib.h>
+//#include<stdint.h>
+//#define SIZE  1000000
+//
+////时间戳查看 :data +%s
+////us ->微秒
+////ms ->毫秒
+//
+//int64_t  GetUs(){
+//  //时间戳可能为负(闰秒),返回值类型需为有符号型
+//  struct timeval tv;
+//  gettimeofday(&tv,NULL);
+//  return tv.tv_sec*1000000+tv.tv_usec;
+//  //当前的秒数*1000000转化为微秒+当前微秒数
+//}
+//void Calc(int *arr,int beg,int end){
+//  for(int i=beg;i<end;++i){
+//    arr[i]=arr[i]*arr[i];
+//  }
+//}
+//int main()
+//{
+//  //记录开始时间
+//  int64_t beg=GetUs();
+//  int *arr=(int *)malloc(sizeof(int)*SIZE);
+//  Calc(arr,0,SIZE);
+//  //记录结束时间
+//  //两者的差为执行的时间
+//  int64_t end=GetUs();
+//  printf("执行时间=%ld \n",end-beg);
+//  return 0;
+//}
+//
+//
+//
+////多线程版本
+
+
+
 #include<stdio.h>
 #include<unistd.h>
 #include<pthread.h>
@@ -12,50 +55,7 @@
 #include<stdint.h>
 #define SIZE  1000000
 
-//时间戳查看 :data +%s
-//us ->微秒
-//ms ->毫秒
-
-int64_t  GetUs(){
-  //时间戳可能为负(闰秒),返回值类型需为有符号型
-  struct timeval tv;
-  gettimeofday(&tv,NULL);
-  return tv.tv_sec*1000000+tv.tv_sec;
-  //当前的秒数*1000000转化为微秒+当前微秒数
-}
-void Calc(int *arr,int beg,int end){
-  for(int i=beg;i<end;++i){
-    arr[i]=arr[i]*arr[i];
-  }
-}
-int main()
-{
-  //记录开始时间
-  int64_t beg=GetUs();
-  int *arr=(int *)malloc(sizeof(int)*SIZE);
-  Calc(arr,0,SIZE);
-  //记录结束时间
-  //两者的差为执行的时间
-  int64_t end=GetUs();
-  printf("执行时间=%ld \n",end-beg);
-  return 0;
-}
-#endif
-
-
-//多线程版本
-
-
-
-#include<stdio.h>
-#include<unistd.h>
-#include<pthread.h>
-#include<sys/time.h>
-#include<stdlib.h>
-#include<stdint.h>
-#define SIZE  100000000
-
-#define  THREAD_NUM  2
+#define  THREAD_NUM  3
 
 typedef struct Arg{
   int beg;
@@ -66,7 +66,7 @@ typedef struct Arg{
 int64_t  GetUs(){
   struct timeval tv;
   gettimeofday(&tv,NULL);
-  return tv.tv_sec*1000000+tv.tv_sec;
+  return tv.tv_sec*1000000+tv.tv_usec;
  
 }
 void Calc(int *arr,int beg,int end){
