@@ -4,7 +4,8 @@
 #include<sys/socket.h>  //socket所用的头文件
 #include<netinet/in.h>  //socketaddr_in 结构体的头文件
 #include<arpa/inet.h>   //inet.addr的头文件
-
+#include<cstring>
+#include<unistd.h>
 
 int main(){
   //1.先创建一个socket
@@ -30,15 +31,33 @@ int main(){
     perror("bind");
     return 1;
   }
-  printf("server start ok!");
-  //3.处理服务器收到的请求
-  while(ture){
-    //1.读取客户端的请求
-    recvform();
-    //2.根据请求计算响应时间
-    //3.把响应写回客户端
-    
-  }
-  return 0;
 
+  printf("server start ok!\n");
+  //3.处理服务器收到的请求
+  while(true){
+    //1.读取客户端的请求
+    //面向数据报的函数
+    sockaddr_in peer;//获取客户端的ip
+    socklen_t len=sizeof(peer);//表示一个整数
+    char buf[1024]={0};
+    ssize_t n= recvfrom(sock,buf,sizeof(buf)-1,0,(sockaddr*)&peer,&len);
+   
+   if(n<0){
+     perror("recvfrom");
+     continue;//考虑到容错,不要因为一次请求的失利就结束整个程序
+   }
+   buf[n]='\0';
+    //2.根据请求计算响应时间
+    //[略]此处写的是一个回显服务器(echo server)
+    //3.把响应写回客户端
+    n=sendto(sock,buf,strlen(buf),0,(sockaddr*)&peer,len);
+    if(n<0){
+      perror("sendto");
+      continue;
+    }
+    printf("[%s:%d] buf: %s\n",inet_ntoa(peer.sin_addr),
+      ntohs(peer.sin_port), buf);
+  }
+  close(sock);
+  return 0;
 }
