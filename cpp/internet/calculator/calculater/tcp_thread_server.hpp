@@ -97,5 +97,6 @@ static void *ThreadEntry(void* arg){
     client_sock.Send(resp);
   }
   delete  argument;
+  return NULL;
 }
 };
