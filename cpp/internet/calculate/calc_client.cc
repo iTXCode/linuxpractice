@@ -9,7 +9,7 @@ int main(){
     return 1;
   }
   while(true){
-    printf("请输入两个操作数:");
+    printf("请输入两个操作数和对应的计算操作符:");
     fflush(stdout);
     int num1=0;
     int num2=0;

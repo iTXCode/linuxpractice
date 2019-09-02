@@ -20,7 +20,7 @@ int main(){
       if(op=="+"){
       ret=num1+num2;
       }else if(op=="-"){
-      ret=num1-num1;
+      ret=num1-num2;
       }else if(op=="*"){
       ret=num1*num2;
       }else if (op=="/"){
@@ -30,7 +30,7 @@ int main(){
       //*resp=std::to_string(ret);
       std::stringstream  ss_resp;
       ss_resp<<ret;
-      *resp=ss_resp.str()const ;
+      *resp=ss_resp.str() ;
   });
   return 0;
 }
