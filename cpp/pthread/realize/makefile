@@ -9,3 +9,6 @@ pthread_detach:pthread_detach.c
 
 pthread_exit:pthread_exit.c
 	gcc $^  -o  $@  -lpthread
+
+ps_model:ps_model.cc 
+	g++ $^ -o $@  -lpthread
