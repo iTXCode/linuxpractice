@@ -12,3 +12,6 @@ pthread_exit:pthread_exit.c
 
 ps_model:ps_model.cc 
 	g++ $^ -o $@  -lpthread
+
+ps_model_queue:ps_model_queue.cc
+	g++ ps_model_queue.cc -o ps_model_queue   -lpthread
