@@ -47,7 +47,7 @@ public:
      //空树的处理方式
      pRoot=new Node(data);
      pRoot->_pParent=_pHead;
-     _pHead->_pLeft=pRoot;
+     _pHead->pLeft=pRoot;
      _pHead->_pRight=pRoot;
      return true;
    }
@@ -125,7 +125,7 @@ public:
              if(pCur==pParent->_pRight){
                //情况三-->将情况三装换成情况二
                RotateLeft(pParent);
-               std::swap(pParent,pCur);
+               swap(pParent,pCur);
              }
              //处理情况二
              grandFather->_color=RED;
@@ -135,21 +135,9 @@ public:
          }else{
            //叔叔节点在祖父节点的左侧 
            Node* uncle=grandFather->_pLeft;
-           if(uncle && RED==uncle->_color){
+           if(uncle&&RED=uncle->_color){
              //叔叔存在且为红的情况
-             pParent->_color=BLACK;
-             uncle->_color=BLACK;
-             grandFather->_color=RED;
-             pCur=grandFather;
-             pParent=pCur->_pParent;
-           }else{
-             if(pCur==pParent->_pLeft){
-               RotateRight(pParent);
-               std::swap(pParent,pCur);
-             }
-             pParent->_color=BLACK;
-             grandFather->_color=RED;
-             RotateLeft(grandFather);
+
            }
          }
      }
@@ -188,27 +176,8 @@ public:
   }
 
   void RotateLeft(Node* pParent){
-    //左单旋,pParent的右子树高度较高导致
-    Node* pSubR =pParent->_pRight;
-    Node* pSubRL=pSubR->_pLeft; 
-    
-    pParent->_pRight=pSubRL;
-    if(pSubRL){
-      pSubRL->_pParent=pParent;
-    }
-   pSubR->_pLeft=pParent;
-   Node* pPParent=pParent->_pParent;
-   pParent->_pParent=pSubR;
-   pSubR->_pParent=pPParent;
-   if(pPParent==_pHead)
-     GetRoot()=pSubR;
-   else{
-     if(pPParent->_pLeft==pParent){
-       pPParent->_pLeft=pSubR;
-     }else{
-       pPParent->_pRight=pSubR; 
-     }
-   }
+    //左单
+
   }
 
   void RotateRight(Node* pParent){
@@ -236,98 +205,10 @@ public:
         pPParent->_pRight=pSubL;
     }
   }
-   //先序遍历
-  void PreOrder(){
-    _PreOrder(GetRoot());
-  }
- 
-//中序遍历
-  void InOrder(){
-  _InOrder(GetRoot());
-  }
 
-  //后序遍历
-  void TailOrder(){
-    _TailOrder(GetRoot());
-  }
-
-
-  //检查红黑树的性质
-  bool IsValidRBTree(){
-    Node *pRoot=GetRoot();
-    if(nullptr==pRoot){
-      return true;
-    }
-    if(pRoot->_color!=BLACK){
-      std::cout<<"违反了性质一:根节点必须为黑色"<<std::endl;
-      return false;
-    }
-    //获取一条路径中节点的个数
-    size_t blackCount=0;
-    Node* pCur=pRoot;
-    while(pCur){
-      if(pCur->_color==BLACK)
-        blackCount++;
-      pCur =pCur->_pLeft; 
-    }
-    size_t pathBlack=0;
-    return _IsValidRBTree(pRoot,blackCount,pathBlack);
-  }
 private:
   Node* _pHead;
   Node* &GetRoot(){
     return _pHead->_pParent;
   }
-  void _PreOrder(Node *pRoot){
-    if(pRoot){
-
-      std::cout<<pRoot->_data<<" ";
-      _PreOrder(pRoot->_pLeft);
-      _PreOrder(pRoot->_pRight);
-    }
-
-  }
-  void _InOrder(Node* pRoot){
-    if(pRoot){
-
-      //判断树是否存在
-      _InOrder(pRoot->_pLeft);
-      std::cout<<pRoot->_data<<" ";
-      _InOrder(pRoot->_pRight); 
-    }
-
-  }
-
-  void _TailOrder(Node *pRoot){
-    if(pRoot){
-
-      _TailOrder(pRoot->_pLeft);
-      _TailOrder(pRoot->_pRight);
-      std::cout<<pRoot->_data<<" ";
-    }
-  }
-
-  bool _IsValidRBTree(Node *pRoot,size_t blackCount,size_t pathBlack){
-    if(nullptr==pRoot)
-      return true;
-    if(pRoot->_color==BLACK)
-      pathBlack++;
-
-    //性质三的监测
-    Node* pParent=pRoot->_pParent;
-    if(pParent!=_pHead&&pParent->_color==RED&&pRoot->_color==RED){
-      std::cout<<"违反了性质三:不能有连在一起的红色节点"<<std::endl;
-      return false; 
-    }
-    //一条路径到了叶子节点
-    if(pRoot->_pLeft==nullptr&&pRoot->_pRight==nullptr){
-      if(blackCount!=pathBlack){
-        std::cout<<"违反性质4:每条路径中黑色节点的个数必须相同:"<<std::endl;
-        return false;
-      }
-    }
-    return _IsValidRBTree(pRoot->_pLeft,blackCount,pathBlack)&&
-      _IsValidRBTree(pRoot->_pRight,blackCount,pathBlack);
-  }
-
 };

@@ -18,6 +18,11 @@ void Test(){
   cout<<"后序遍历:";
   t.TailOrder();
   cout<<endl;
+  if(t.IsValidRBTree()){
+    cout<<"t 是一课红黑树"<<endl;
+  }else{
+    cout<<"t 不是一颗红黑树"<<endl;
+  }
   
 }
 
