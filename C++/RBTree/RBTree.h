@@ -34,6 +34,8 @@ public:
     _pHead=new Node;
     _pHead->_pLeft=_pHead;
     _pHead->_pRight=_pHead;
+    //只有一个节点的时候,该节点和头结点
+    //建立起联系,让整个树完整的体现
   }
 
   bool Insert(const T&data){
@@ -41,9 +43,11 @@ public:
     //若为空,则其为空树
    Node* &pRoot=GetRoot();
    if(nullptr==pRoot){
+     //处理只有头结点,没有根节点的情况
+     //空树的处理方式
      pRoot=new Node(data);
      pRoot->_pParent=_pHead;
-     _pHead->pLeft=pRoot;
+     _pHead->_pLeft=pRoot;
      _pHead->_pRight=pRoot;
      return true;
    }
@@ -60,23 +64,101 @@ public:
          pCur=pCur->_pRight;
        else 
          return false;
+       //红黑树不允许存在节点数据相同的情况
      }
-     //插入新的节点
+     //插入新的节点,不指明颜色即为红色
      pCur=new Node(data);
      if(data<pParent->_data)
        pParent->_pLeft=pCur;
      else 
        pParent->_pRight=pCur;
-     pCur->_pParent=pParent;
+     pCur->_pParent=pParent;//更新插入节点的双亲节点
+     
+     //检测:新节点插入后,是否有连在一起的红色节点
+     while(pParent!=_pHead && RED==pParent->_color){         
+         //【情况一】:要插入位置的父亲节点为红色
+         //祖父为根节点的情况,
+         //插入的节点若为黑色,该路径上就多了一个黑色节点
+         //(只将双亲节点给成黑色也会造成这种情况)
+         //需要将双亲节点和叔叔节点同事给成黑色且插入的节点为红色节点
 
-     //检测:是否新节点插入后,是否有连在一起的红色节点
-     if(RED==pParent->_color){
-       
+         //若祖父节点不是根节点的话,上述改动方式会使这两条路径相比
+         //同地位的路径多出了一个黑色节点,所以需要让这两条路径少一个黑色节点
+         //方法:将祖父节点变成红色的节点
+         //继续监测祖父节点的双亲节点
+
+
+         //【情况二】:cur、p是红色 g是黑色 u:不存在||存在&黑色
+         //u:不存在,cur 一定为新插入的节点
+         //判断的依据:如果cur不是新插入的节点,那么两个红节点就连接到一起了
+         //
+         //u:存在&黑色 cur一定不是新插入的节点&以前一定为黑色
+         //判断依据:g、u都为黑色,g右子树上有两个黑节点
+         //而p、cur都为红的话,g左子树上只有一个黑节点(不满足红黑树性质)
+         //所以cur必然是黑色调整过来的,此时需要调整整个红黑树了
+         //cur变红的原因是其子树中插入了新的节点后调整所致
+         //(若p之前是黑色的话就没必要进行调整了)
+         //[解决办法]:将p改成黑色,g变成红色,(导致g的右子树中少了一个黑色节点)
+         //此时需要以g为轴进行右旋 g和g的右子树移动脱离原树
+         //将p的右子树接到g的左子树上,在将g所在的树整个移动到p的右子树位置
+         // 
+
+
+
+         //【情况三】:cur、p为红色&cur 为p的右子树,g和u都为黑色
+         //【解决办法】:想办法将其变成情况二,以p为轴进行左单旋
+         //将cur提高成p的双亲节点,让p变成cur的子树,使cur左子树为p的右子树
+         //将指向cur和p的指针交换下位置
+         //然后在使用情况二进行处理
+         Node *grandFather =pParent->_pParent;
+         //情况一:叔叔存在且为红
+         if(pParent==grandFather->_pLeft){
+           Node *uncle=grandFather->_pRight;
+           if(uncle && uncle->_color==RED){
+             pParent->_color=BLACK;
+             uncle->_color=BLACK;
+             grandFather->_color=RED;
+             pCur=grandFather;
+             pParent=pCur->_pParent;
+           }else{
+             //叔叔节点不存在或者为黑-->情况二或者情况三
+             if(pCur==pParent->_pRight){
+               //情况三-->将情况三装换成情况二
+               RotateLeft(pParent);
+               std::swap(pParent,pCur);
+             }
+             //处理情况二
+             grandFather->_color=RED;
+             pParent->_color=BLACK;
+             RotateRight(grandFather);
+           }
+         }else{
+           //叔叔节点在祖父节点的左侧 
+           Node* uncle=grandFather->_pLeft;
+           if(uncle && RED==uncle->_color){
+             //叔叔存在且为红的情况
+             pParent->_color=BLACK;
+             uncle->_color=BLACK;
+             grandFather->_color=RED;
+             pCur=grandFather;
+             pParent=pCur->_pParent;
+           }else{
+             if(pCur==pParent->_pLeft){
+               RotateRight(pParent);
+               std::swap(pParent,pCur);
+             }
+             pParent->_color=BLACK;
+             grandFather->_color=RED;
+             RotateLeft(grandFather);
+           }
+         }
      }
    }
-   pRoot->_color=BLACK;
-   _pHead->_pLeft=LeftMost();
+   pRoot->_color=BLACK;//保证根节点的颜色为黑色
+   //更新红黑树的最大最小节点的指向情况
+   _pHead->_pLeft=LeftMost(); 
    _pHead->_pRight=RightMost();
+   return true;//插入成功
   }
 
   Node* LeftMost(){
@@ -87,6 +169,7 @@ public:
     Node* pCur=pRoot;
     while(pCur->_pLeft){
       pCur=pCur->_pLeft;
+      //往左查找最左面的节点
     }
     return pCur;
   }
@@ -99,14 +182,106 @@ public:
     Node* pCur=pRoot;
     while(pCur->_pRight){
       pCur=pCur->_pRight;
+      //查找最右侧的节点
     }
     return pCur;
   }
 
+  void RotateLeft(Node* pParent){
+    //左单旋,pParent的右子树高度较高导致
+    Node* pSubR =pParent->_pRight;
+    Node* pSubRL=pSubR->_pLeft; 
+    
+    pParent->_pRight=pSubRL;
+    if(pSubRL){
+      pSubRL->_pParent=pParent;
+    }
+   pSubR->_pLeft=pParent;
+   Node* pPParent=pParent->_pParent;
+   pParent->_pParent=pSubR;
+   pSubR->_pParent=pPParent;
+   if(pPParent==_pHead)
+     GetRoot()=pSubR;
+   else{
+     if(pPParent->_pLeft==pParent){
+       pPParent->_pLeft=pSubR;
+     }else{
+       pPParent->_pRight=pSubR; 
+     }
+   }
+  }
 
+  void RotateRight(Node* pParent){
+    //右单旋
+    Node *pSubL=pParent->_pLeft;
+    Node *pSubLR=pSubL->_pRight;
+    pParent->_pLeft=pSubLR;
+    if(pSubLR){
+      pSubLR->_pParent=pParent;
+    }
+    pSubL->_pRight=pParent; 
+
+    //原先的pParent可能还有双亲节点,所以需要将其
+    //双亲节点保存一下
+    Node* pPParent=pParent->_pParent;
+    pParent->_pParent=pSubL;
+    pSubL->_pParent=pPParent;
+    //pPParent 是根节点的时候
+    if(pPParent==_pHead){
+      GetRoot()=pSubL;
+    }else{
+      if(pPParent->_pLeft==pParent)
+        pPParent->_pLeft=pSubL;
+      else 
+        pPParent->_pRight=pSubL;
+    }
+  }
+   //先序遍历
+  void PreOrder(){
+    _PreOrder(GetRoot());
+  }
+ 
+//中序遍历
+  void InOrder(){
+  _InOrder(GetRoot());
+  }
+
+  //后序遍历
+  void TailOrder(){
+    _TailOrder(GetRoot());
+  } 
 private:
   Node* _pHead;
   Node* &GetRoot(){
     return _pHead->_pParent;
+  }
+  void _PreOrder(Node *pRoot){
+    if(pRoot){
+
+      std::cout<<pRoot->_data<<" ";
+      _PreOrder(pRoot->_pLeft);
+      _PreOrder(pRoot->_pRight);
+    }
+
+  }
+  void _InOrder(Node* pRoot){
+    if(pRoot){
+
+      //判断树是否存在
+      _InOrder(pRoot->_pLeft);
+      std::cout<<pRoot->_data<<" ";
+      _InOrder(pRoot->_pRight); 
+    }
+
+  }
+
+  void _TailOrder(Node *pRoot){
+    if(pRoot){
+
+      _TailOrder(pRoot->_pLeft);
+      _TailOrder(pRoot->_pRight);
+      std::cout<<pRoot->_data<<" ";
+    }
+
   }
 };
