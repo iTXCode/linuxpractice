@@ -26,7 +26,7 @@ void SListPushFront(SList *list,SLDataType value){
   assert(list!=NULL);
   SLNode* new_node=(SLNode*)malloc(sizeof(SLNode));
   new_node->_value=value;
-  new_node->next=list->first->next;
+  new_node->next=list->first;
   list->first=new_node;
 }
 
@@ -62,8 +62,7 @@ void SListPopBack(SList *list){
   assert(list->first!=NULL);
   SLNode *cur=list->first;
   SLNode *tmp=NULL;
-  while(cur->next!=NULL){
-    tmp=cur;
+  while(cur->next->next!=NULL){ 
     cur=cur->next;
   }
   tmp=cur->next;
@@ -75,29 +74,69 @@ void SListPopBack(SList *list){
 void SListPrint(SList *list){
   assert(list!=NULL);
 
-  SLNode *cur=list->first;
+ SLNode *cur=list->first;
   while(cur!=NULL){
-    printf("%d  ",list->first->_value);
+    printf("%d  ",cur->_value);
     cur=cur->next;
   }
   printf("\n");
+  
+ // for (SLNode *cur = list->first; cur != NULL; cur = cur->next){
+ //       printf("%d--> ",cur->_value);
+ //         
+ // }
+ //   printf("NULL\n");
 }
 
-////查
-//SLNode * SListFind(const SList *list, SLDataType value){
-//
-//}
-//
-////改
-//void  SlistNodeUpdate(SLNode *node, SLDataType value);
-//
-////指定位置插入元素
-////1-->2-->3-->NULL
-//
-//void SListInsertAfter(SLNode *pos, SLDataType value);
-//
-////删除给定pos位置后面的结点
-//void SListEraseAfter(SLNode *pos);
-//
-////指定位置pos 前面插入新结点
-//void SListInsertBefore(SList *list, SLNode *pos, SLDataType value);
+//查
+SLNode * SListFind(const SList *list, SLDataType value){
+  assert(list!=NULL);
+  assert(list->first!=NULL);
+  SLNode *cur=list->first;
+  while(cur!=NULL){
+    if(cur->_value==value)
+      return cur;
+    cur=cur->next;
+  }
+  return NULL;
+}
+
+//改
+void  SlistNodeUpdate(SLNode *node, SLDataType value){
+  node->_value=value;
+}
+
+//指定位置插入元素
+//1-->2-->3-->NULL
+
+void SListInsertAfter(SLNode *pos, SLDataType value){
+  assert(pos!=NULL);
+  SLNode *new_node=(SLNode*)malloc(sizeof(SLNode));
+  new_node->_value=value;
+  new_node->next=pos->next;
+  pos->next=new_node;
+}
+
+//删除给定pos位置后面的结点
+void SListEraseAfter(SLNode *pos){
+  assert(pos!=NULL);
+  SLNode* cur=pos->next;
+  pos->next=pos->next->next;
+  free(cur);
+}
+
+//指定位置pos 前面插入新结点
+void SListInsertBefore(SList *list, SLNode *pos, SLDataType value){
+  assert(list!=NULL);
+  assert(pos!=NULL);
+
+  SLNode* cur=list->first;
+  while(cur->next!=pos){
+    cur=cur->next;
+  }
+
+  SLNode *new_node=(SLNode*)malloc(sizeof(SLNode));
+  new_node->_value=value;
+  new_node->next=pos;
+  cur->next=new_node;
+}
