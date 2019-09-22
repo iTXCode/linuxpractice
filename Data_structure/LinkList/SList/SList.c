@@ -1,5 +1,6 @@
 #include"SList.h"
-
+//->指针解引用
+//. 变量解引用
 
 //初始化
 void SListInit(SList*list){
@@ -8,6 +9,7 @@ void SListInit(SList*list){
 }
 
 //销毁过程(不太熟练)
+//需要遍历整个链表且将遍历到的结点释放掉
 void SListDestory(SList *list){
   assert(list!=NULL);
   SLNode* cur=list->first;
@@ -60,13 +62,19 @@ free(tmp);
 void SListPopBack(SList *list){
   assert(list!=NULL);
   assert(list->first!=NULL);
+  //如果只有一个结点需要特殊处理
+  
+  if(list->first->next==NULL){
+    SListPopFront(list);
+    return;
+  }
   SLNode *cur=list->first;
-  SLNode *tmp=NULL;
+
   while(cur->next->next!=NULL){ 
     cur=cur->next;
   }
-  tmp=cur->next;
-  free(tmp);
+
+  free(cur->next);
   cur->next=NULL;
 }
 
@@ -76,7 +84,7 @@ void SListPrint(SList *list){
 
  SLNode *cur=list->first;
   while(cur!=NULL){
-    printf("%d  ",cur->_value);
+    printf("%d-->",cur->_value);
     cur=cur->next;
   }
   printf("\n");
@@ -108,7 +116,7 @@ void  SlistNodeUpdate(SLNode *node, SLDataType value){
 
 //指定位置插入元素
 //1-->2-->3-->NULL
-
+//pos 一定是链表中的有效节点
 void SListInsertAfter(SLNode *pos, SLDataType value){
   assert(pos!=NULL);
   SLNode *new_node=(SLNode*)malloc(sizeof(SLNode));
@@ -129,14 +137,17 @@ void SListEraseAfter(SLNode *pos){
 void SListInsertBefore(SList *list, SLNode *pos, SLDataType value){
   assert(list!=NULL);
   assert(pos!=NULL);
-
+  SLNode *new_node=(SLNode*)malloc(sizeof(SLNode));
+  
   SLNode* cur=list->first;
   while(cur->next!=pos){
     cur=cur->next;
   }
-
-  SLNode *new_node=(SLNode*)malloc(sizeof(SLNode));
+ 
   new_node->_value=value;
   new_node->next=pos;
   cur->next=new_node;
 }
+
+
+

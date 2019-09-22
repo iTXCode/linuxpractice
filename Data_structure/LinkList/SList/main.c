@@ -19,6 +19,7 @@ void TestSLNode(){
   SListpushBack(&slist,3);
   SListpushBack(&slist,2);
   SListpushBack(&slist,100);
+  SListPrint(&slist);
   //5 8 9 1 4 3 2 100
   SListPopFront(&slist);
   // 8 9 1 4 3 2 100
