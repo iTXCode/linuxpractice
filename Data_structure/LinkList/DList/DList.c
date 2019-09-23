@@ -15,8 +15,8 @@ DListNode * DListBuyNode(DLDataType value){
 void DListInit(DList *dlist){
   assert(dlist!=NULL);
   dlist->head=DListBuyNode(0);
-  dlist->head->_prev=dlist->head;
-  dlist->head->_next=dlist->head; 
+  dlist->head->_prev=NULL;
+  dlist->head->_next=NULL; 
 }
 
 //销毁
@@ -31,7 +31,7 @@ void DListClear(DList *dlist){
     cur=cur->_next;
     free(tmp);
   }
-  dlist->head->_next=dlist->head->_prev=dlist->head;
+  dlist->head->_next=dlist->head->_prev=NULL; 
 }
 
 
@@ -55,12 +55,13 @@ void  DListPushFront(DList *dlist,DLDataType value){
   DListNode* new_node=DListBuyNode(value);
   cur->_next->_prev=new_node;
   new_node->_next=cur->_next;
-  cur->_next=new_node;
+  dlist->head->_next=new_node;
   new_node->_prev=cur;
 }
 //尾插
 void DListPushBack(DList *dlist, DLDataType value){
   assert(dlist!=NULL);
+
   DListNode* node=DListBuyNode(value);
   DListNode* cur=dlist->head;
   while(cur->_next!=NULL){
@@ -68,28 +69,81 @@ void DListPushBack(DList *dlist, DLDataType value){
   }
   cur->_next=node;
   node->_prev=cur;
-  node->_prev=NULL;
+  node->_next=NULL;
 }
 
 
 //删
 //头删
-void DListPopFront(DList *dlist,DLDataType value);
+void DListPopFront(DList *dlist){
+  assert(dlist!=NULL);
+
+  DListNode* cur=dlist->head;
+  dlist->head=cur->_next;
+  free(cur);
+  dlist->head->_prev=NULL;
+}
 //尾删
-void DListPopBack(DList *dlist, DLDataType value);
+void DListPopBack(DList *dlist){
+  assert(dlist!=NULL);
+  DListNode* cur=dlist->head;
+  while(cur->_next!=NULL){
+    cur=cur->_next;
+  }
+  cur->_prev->_next=NULL;
+  free(cur);
+}
 
 
 //查找
 
-DListNode * DListFind(DList *dlist,DLDataType value);
+DListNode * DListFind(DList *dlist,DLDataType value){
+  assert(dlist!=NULL);
+
+  DListNode* cur=dlist->head;
+  while(cur!=NULL){
+    if(cur->_value==value)
+      return cur;
+    cur=cur->_next;
+  }
+  return NULL;
+}
 
 //插
 // 在pos的前面进行插入
-void DListInsert(DListNode *pos, DLDataType value);
+void DListInsert(DListNode *pos, DLDataType value){
+ DListNode* node=DListBuyNode(value);
+ node->_next=pos;
+ node->_prev=pos->_prev;
+ pos->_prev->_next=node;
+ pos->_prev=node;
+}
 // 删除pos位置的节点
-void DListErase(DListNode *pos);
+void DListErase(DListNode *pos){
 
-void ListRemove(DList * dlsit, DLDataType value);
+  pos->_prev->_next=pos->_next;
+  pos->_next->_prev=pos->_prev;
+  free(pos);
+}
+
+void ListRemove(DList * dlist, DLDataType value){
+  assert(dlist);
+
+  DListNode* cur=dlist->head;
+  while(cur!=NULL){
+    if(cur->_value==value)
+    DListErase(cur);
+    cur=cur->_next;
+  }
+}
 
 //打印
-void DListPrint(const DList *dlist);
+void DListPrint(const DList *dlist){
+  assert(dlist!=NULL);
+
+  DListNode* cur=dlist->head;
+  while(cur->_next!=NULL){
+    printf("%d<-->",cur->_value);
+    cur=cur->_next;
+  }
+}

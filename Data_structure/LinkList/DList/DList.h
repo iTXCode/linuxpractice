@@ -38,9 +38,9 @@ void DListPushBack(DList *dlist, DLDataType value);
 
 //删
 //头删
-void DListPopFront(DList *dlist,DLDataType value);
+void DListPopFront(DList *dlist);
 //尾删
-void DListPopBack(DList *dlist, DLDataType value);
+void DListPopBack(DList *dlist);
 
 
 //查找
