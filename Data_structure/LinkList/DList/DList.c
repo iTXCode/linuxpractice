@@ -50,13 +50,24 @@ void DListDestory(DList *dlist){
 //头插
 void  DListPushFront(DList *dlist,DLDataType value){
   assert(dlist!=NULL);
+  assert(dlist->head!=NULL);
 
   DListNode* cur=dlist->head;
   DListNode* new_node=DListBuyNode(value);
-  cur->_next->_prev=new_node;
   new_node->_next=cur->_next;
-  dlist->head->_next=new_node;
+  if(cur->_next!=NULL)
+    cur->_next->_prev=new_node;
   new_node->_prev=cur;
+  dlist->head->_next=new_node;
+
+
+#if 0
+  DListNode* node=DListBuyNode(value);
+  node->_prev = dlist->head;
+  node->_next = dlist->head->_next;
+  dlist->head->_next->_prev = node;
+  dlist->head->_next = node;
+#endif 
 }
 //尾插
 void DListPushBack(DList *dlist, DLDataType value){
@@ -100,7 +111,7 @@ void DListPopBack(DList *dlist){
 DListNode * DListFind(DList *dlist,DLDataType value){
   assert(dlist!=NULL);
 
-  DListNode* cur=dlist->head;
+  DListNode* cur=dlist->head->_next;
   while(cur!=NULL){
     if(cur->_value==value)
       return cur;
@@ -113,6 +124,7 @@ DListNode * DListFind(DList *dlist,DLDataType value){
 // 在pos的前面进行插入
 void DListInsert(DListNode *pos, DLDataType value){
  DListNode* node=DListBuyNode(value);
+ 
  node->_next=pos;
  node->_prev=pos->_prev;
  pos->_prev->_next=node;
@@ -121,16 +133,17 @@ void DListInsert(DListNode *pos, DLDataType value){
 // 删除pos位置的节点
 void DListErase(DListNode *pos){
 
-  pos->_prev->_next=pos->_next;
-  pos->_next->_prev=pos->_prev;
+  pos->_prev->_next = pos->_next ;
+  pos->_next->_prev=pos->_prev; 
   free(pos);
+
 }
 
 void ListRemove(DList * dlist, DLDataType value){
-  assert(dlist);
+  assert(dlist!=NULL);
 
-  DListNode* cur=dlist->head;
-  while(cur!=NULL){
+  DListNode* cur=dlist->head->_next;
+  while(cur->_next!=NULL){
     if(cur->_value==value)
     DListErase(cur);
     cur=cur->_next;
@@ -141,9 +154,10 @@ void ListRemove(DList * dlist, DLDataType value){
 void DListPrint(const DList *dlist){
   assert(dlist!=NULL);
 
-  DListNode* cur=dlist->head;
-  while(cur->_next!=NULL){
+  DListNode* cur=dlist->head->_next;
+  while(cur!=NULL){
     printf("%d<-->",cur->_value);
     cur=cur->_next;
   }
+  printf("\n");
 }

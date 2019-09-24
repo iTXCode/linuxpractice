@@ -53,7 +53,7 @@ void DListInsert(DListNode *pos, DLDataType value);
 // 删除pos位置的节点
 void DListErase(DListNode *pos);
 
-void ListRemove(DList * dlsit, DLDataType value);
+void ListRemove(DList * dlist, DLDataType value);
 
 //打印
 void DListPrint(const DList *dlist);
