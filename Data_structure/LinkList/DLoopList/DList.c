@@ -10,6 +10,27 @@ DListNode*  DListBuyNode(DLDataType value){
   return node;
 }
 
+void DListClear(DList* dlist){
+  assert(dlist!=NULL);
+
+  DListNode* cur=dlist->head->_next;
+  while(cur!=dlist->head){
+    DListNode* tmp=cur;
+    free(tmp);
+    cur=cur->_next;
+  }
+  dlist->head->_next=NULL;
+  dlist->head->_prev=NULL;
+}
+
+void DListDestory(DList* dlist){
+  assert(dlist!=NULL);
+ if(dlist->head->_next!=NULL)
+  DListClear(dlist);
+  free(dlist->head);
+  dlist->head=NULL;
+}
+
 void DListInit(DList* dlist){
   assert(dlist!=NULL);
   
@@ -40,6 +61,18 @@ void DListPushBack(DList* dlist,DLDataType value){
   dlist->head->_prev=new_node;
 }
 
+DListNode* DListFind(const DList* dlist,DLDataType  value){
+  assert(dlist!=NULL);
+
+  DListNode* cur=dlist->head->_next;
+  while(cur!=dlist->head){
+    if(cur->_value==value)
+      return cur;
+    cur=cur->_next; 
+  }
+  return NULL;
+}
+
 void DListPopFront(DList* dlist){
   assert(dlist!=NULL);
 
@@ -62,11 +95,11 @@ void DListPopBack(DList* dlist){
 
 bool DListEmpty(const DList*dlist){
   assert(dlist!=NULL);
-  assert(dlist->head!=NULL);
+ 
   if(dlist->head->_next==dlist->head)
-    return false;
-  else 
     return true;
+  else 
+    return false;
 }
 
 
@@ -90,8 +123,7 @@ void ListRemove(DList * dlist, DLDataType value){
   assert(dlist!=NULL);
 
   DListNode* cur=dlist->head->_next;
-  while(cur!=dlist->head){
-    //没写完
+  while(cur!=dlist->head){ 
     if(cur->_value==value)
     DListErase(cur);
     cur=cur->_next;

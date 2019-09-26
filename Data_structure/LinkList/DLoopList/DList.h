@@ -1,7 +1,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<assert.h>
-
+#include<stdbool.h>
 typedef int DLDataType;
 
 typedef struct DListNode{
@@ -29,9 +29,9 @@ void DListPopFront(DList* dlist);
 
 void DListPopBack(DList* dlist);
 
-bool DListEmpty(DList* dlist);
+bool DListEmpty(const DList* dlist);
 
-DListNode* DListFind(DList *dlist,DLDataType value);
+DListNode* DListFind(const DList *dlist,DLDataType value);
 
 DListNode* DListBuyNode(DLDataType value);
 

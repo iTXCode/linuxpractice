@@ -14,6 +14,17 @@ void TestDList(){
   DListPrint(&dlist);
   DListPopBack(&dlist);
   DListPrint(&dlist);
+  DListNode* node=DListFind(&dlist,3);
+  DListInsert(node,520);
+  DListPrint(&dlist);
+  DListErase(node);
+  DListPrint(&dlist);
+  bool ret=DListEmpty(&dlist);
+  printf("DList is Empty? %d\n",ret);
+  DListClear(&dlist);
+  
+  DListDestory(&dlist);
+
 }
 
 int main(){
