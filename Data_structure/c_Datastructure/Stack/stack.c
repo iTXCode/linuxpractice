@@ -14,6 +14,10 @@ void StackInit(Stack *stack){
 //压栈(顺序表的尾插)
 
 void StackPush(Stack* stack, int value){
+  if(stack->top==100){
+    printf("栈已满，无法继续添加!\n");
+    return; 
+  }
   stack->array[stack->top]=value;
   stack->top++;
 }
