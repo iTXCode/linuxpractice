@@ -51,22 +51,42 @@ void PostOrderTravel(Bitree root){
   }
 }
 
+//输出树中的叶子结点
 void  PreOrder(Bitree root){
   if(root!=NULL){
     if(root->_left==NULL&&root->_right==NULL)
-      printf("%c\n",root->_value);
+      printf("%c ",root->_value);
     PreOrder(root->_left);
     PreOrder(root->_right);
     //按先序遍历的方式输出所有遇到的叶子节点
   }
 }
 
+int Leafcout=0;
 
-void  PostOrder(Bitree root){
+
+int PostOrder(Bitree root){
   if(root!=NULL){
     PostOrder(root->_left);
     PostOrder(root->_right);
-    if(root->_left==NULL&&root->_right==NULL){
-    } 
+    if(root->_left==NULL&&root->_right==NULL)
+      Leafcout++;
   }
+  return Leafcout;
 }
+
+
+//采用分治算法
+int Leaf(Bitree root){
+  int leaf=0;
+  if(root==NULL){
+    leaf=0;
+  }
+  else if((root->_left==NULL)&&(root->_right==NULL)){
+    leaf=1;
+  }else{
+    leaf=Leaf(root->_left)+Leaf(root->_right);
+  }
+  return leaf;
+}
+
