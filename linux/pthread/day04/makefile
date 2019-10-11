@@ -9,4 +9,5 @@ thread:thread.cc
 
 atomic:atomic.cc 
 	g++ $^ -o  $@  -lpthread  -std=c++11
-
+test:test.c
+	gcc test.c  -o test  -std=c99 

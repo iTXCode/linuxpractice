@@ -10,6 +10,7 @@
 
 //./client [ip]
 int main(int argc,char *argv[]){
+
   //1.先创建一个socket
   int sock=socket(AF_INET,SOCK_DGRAM,0);
   if(sock<0){
@@ -33,7 +34,7 @@ int main(int argc,char *argv[]){
   server_addr.sin_family=AF_INET;
   server_addr.sin_addr.s_addr=inet_addr(argv[1]);
   server_addr.sin_port=htons(9090);
-
+   
   //3.客户端直接发送数据即可
   while(1){
     char buf[1024]={0};

@@ -63,6 +63,7 @@ void  PreOrder(Bitree root){
 }
 
 int Leafcout=0;
+//定义一个全局变量用于统计递归过程中的二叉树叶子个数
 
 
 int PostOrder(Bitree root){

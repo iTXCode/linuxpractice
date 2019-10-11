@@ -79,7 +79,7 @@ private:
   int _max_size;
   sem_t _lock;//用一个二元信号量(非0即1)表示互斥锁
   sem_t _elem;  //可用元素的个数
-  sem_t _blank;  //可用空格的个数
+  sem_t _blank;  //可用空间的个数
 };
 
 

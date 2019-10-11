@@ -9,9 +9,10 @@
 每个线程都需要完成一定的任务(执行一定的代码逻辑
 ，这个逻辑是由调用者来决定的)
 */
+#pragma once 
 #include<stdio.h>
 #include"blockingqueue.hpp"
-#pragma once 
+
 class Task{
   //用来表示具体的任务
   public:
