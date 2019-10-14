@@ -28,15 +28,43 @@ public:
   ~List(){
 
   }
-  void ListInit(List<T> *list,int num){
+   void ListInit(List<T> *list,int num){
     assert(list!=NULL);
     list->_first=new SeqList<T>(num);
     //在类与对象衔接的时候,没有将list->_first指向
     //我们需要的顺序表,导致段错误
   }
+
+   //扩容逻辑
+   static void ExpansionCapacity(List<T>* list,int capacity){
+    assert(list!=NULL);
+    assert(list->_first!=NULL);
+    assert(list->_first->_size<=list->_first->_capacity);
+    SeqList<T> *array= new SeqList<T>(2*capacity);
+    //将之前的数据依次搬移到新的空间中
+    for(int i=0;i<list->_first->_size;i++){
+      array[i]=list->_first->_array[i];
+    }
+    delete list->_first->_array;
+    //将指向原有空间的指针指向新的空间
+    list->_first->_array=(T*)array;
+    list->_first->_capacity=2*capacity; 
+  }
+
+
   void PushFront(List<T> * list,const T value){
   assert(list!=NULL);
-   
+ 
+  
+  if(list->_first->_size==list->_first->_capacity){
+    ExpansionCapacity(list,list->_first->_capacity);
+  }
+  if(list->_first->_size==0){
+    list->_first->_array[0]=value;
+    list->_first->_size++;
+    return;
+  }
+ 
   //从前往后的搬移数据的话,前面的数据会将后面的数据覆盖
   //因此需要从后往前依次搬移数据
   for(int i=list->_first->_size-1;i>=0;i--){
@@ -50,11 +78,34 @@ public:
   void PushBack(List<T>* list,const T value){
     assert(list!=NULL);
 
+  if(list->_first->_size==list->_first->_capacity){
+    ExpansionCapacity(list,list->_first->_capacity);
+  }
 
     list->_first->_array[list->_first->_size]=value;
     list->_first->_size++;
   }
 
+  //指定位置插入元素
+  
+  void InsertSeqList(List<T>* list,int i,const T value){
+    assert(list!=NULL);
+ 
+    
+    //判断插入元素下标的合法性
+    assert(i>0&&i<list->_first->_size);
+
+    //将指定位置的元素从后往前移动一位
+    for(int j=list->_first->_size;j>i;j--){
+      list->_first->_array[j]=list->_first->_array[j-1];
+    }
+    //给顺序表中的第i个元素重新赋值
+    list->_first->_array[i]=value;
+    //更新顺序表中有效元素的个数
+    list->_first->_size++;
+  }
+
+  
   //删除元素
   //尾删
   void PopBack(List<T>* list){
@@ -78,17 +129,28 @@ public:
     list->_first->_size--;
   }
 
-  //修改给定元素的值
+
+  //删除指定位置的元素
+  void PopListPosition(List<T>* list,int i){
+    assert(list!=NULL);
+    //检查删除位置的合法性
+    assert(i>0&&i<list->_first->_size);
+
+    //开始搬移数据,将i位置的元素覆盖
+    for(int j=i;j<list->_first->_size;j++){
+      list->_first->_array[j]=list->_first->_array[j+1];
+    }
+    //更新顺序表的有效元素个数
+    list->_first->_size--;
+  }
+
+  //修改给定位置的值
   void ModifyList(List<T> *list,int i,const T value){
     assert(list!=NULL);
-    if(i<0||i>=list->_first->_size){
-      std::cout<<"要删除的元素位置下标不合法!"<<std::endl;
-      return;
-    }
-   int num= FindList(list,value);
-   if(num!=-1){
-     list->_first->_array[num]=value;
-   }
+    assert(i<0||i>=list->_first->_size);
+    
+     list->_first->_array[i]=value;
+   
   }
 
   //统计顺序表中有效元素的个数
@@ -115,6 +177,8 @@ public:
     }
     return -1;
   }
+
+
   void PrintList(List<T>* list){
     assert(list!=NULL);
     
