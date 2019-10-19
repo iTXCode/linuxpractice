@@ -34,6 +34,11 @@ void TestTree(){
   }else{
     printf("在该二叉树中找到了该值:%c 该结点地址为:%p\n",find_result->_value,find_result);
   }
+
+  //层序遍历二叉树
+
+  printf("层序遍历二叉树的结果为:");
+  Levelordertravel(tree);
 }                             
               
 int main(){

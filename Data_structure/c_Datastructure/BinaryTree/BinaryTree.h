@@ -1,6 +1,7 @@
 #include<stdio.h>
 #include<assert.h>
 #include<stdlib.h>
+#include<queue>
 typedef char  TNType;
 
 typedef struct TreeNode{
@@ -23,7 +24,6 @@ void CreateTree(Bitree* root){
     CreateTree(&(*root)->_left);
     CreateTree(&(*root)->_right);
   }
-
 }
 
 
@@ -148,3 +148,33 @@ TreeNode*  Tree_Value_Find(Bitree root,char value){
   }
 }
 
+
+//二叉树的程序遍历
+
+void Levelordertravel(TreeNode* root){
+  if(root==NULL){
+    return;
+  }
+  std::queue<TreeNode*> qu;
+  //先将二叉树的根结点压入队列中
+  qu.push(root);
+  while(!qu.empty()){
+
+    //首先取出队列中的队首元素,并将队列的
+    //首元素弹出队列
+    TreeNode* front=qu.front();
+    qu.pop();
+
+    //打印出从队列中取出的结点的值
+    printf("%c ",front->_value);
+
+    //接着判断该结点的左右子树的情况
+    if(front->_left!=NULL){
+      qu.push(front->_left);
+    }
+    //判断从队列中出列的结点的右子树情况
+    if(front->_right!=NULL){
+      qu.push(front->_right);
+    }
+  }
+}

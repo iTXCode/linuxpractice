@@ -10,7 +10,8 @@ typedef int SDataType;
 typedef struct SeqList{
   SDataType * array;
   SDataType _size;
-  SDataType _capacity;
+  SDataType _capacity; 
+  //静态的存储空间
 }SeqList;
 
 //顺序表的初始化/销毁
