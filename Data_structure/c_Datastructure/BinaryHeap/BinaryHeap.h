@@ -68,21 +68,13 @@ void PrintHeap(int array[],int size);
 //         原因:重新调整回堆的成本更小
 //         向下调整(O(logn)) < 建堆（O(n))
 //
+//选择排序：既可以找到最大的放到最后
+//也可以找到最小的放到最前,
+//但是堆排序不能找到最小的放到最前,这样会导致
+//堆乱序
 
 
 //堆排序
 //升序  建大堆
-void HeapSort(int array[],int size){
-  CreateHeap(array,size);
-//i表示被找出的最大的数的个数
-  for(int i=0;i<size-1;i++){
-    //每次循环,会找出最大的一个数放到最后
-    
-    int t=array[0];
-    array[0]=array[size-i-1];
-    array[size-i-1]=t;
-
-    //进行向下调整，数据规模 size-i-1
-    AdjustDown(array,size,0);
-  }
-}
+//这个排序用来排降序
+void HeapSort1(int array[],int size);
