@@ -149,7 +149,7 @@ TreeNode*  Tree_Value_Find(Bitree root,char value){
 }
 
 
-//二叉树的程序遍历
+//二叉树的层序遍历
 
 void Levelordertravel(TreeNode* root){
   if(root==NULL){

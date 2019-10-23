@@ -78,3 +78,6 @@ void PrintHeap(int array[],int size);
 //升序  建大堆
 //这个排序用来排降序
 void HeapSort1(int array[],int size);
+
+//这个排序用来排升序
+void HeapSort2(int array[],int size);

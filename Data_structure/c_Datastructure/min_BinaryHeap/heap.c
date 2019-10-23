@@ -20,6 +20,8 @@ void TestHeap(){
   PrintHeap(heap.array,heap.size);
   HeapSort1(heap.array,heap.size);
   PrintHeap(heap.array,heap.size);
+  HeapSort2(heap.array,heap.size);
+  PrintHeap(heap.array,heap.size);
 }
 
 int main(){
