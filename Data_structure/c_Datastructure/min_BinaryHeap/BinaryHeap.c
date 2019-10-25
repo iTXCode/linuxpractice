@@ -124,11 +124,3 @@ void HeapSort1(int array[],int size){
 }
 
 
-void HeapSort2(int array[],int size){
-  CreateHeap(array,size);
-
-  for(int i=0;i<size-1;i++){
-    Swap(&array[0],&array[size-i-1]);
-    AdjustDown(array,size,0);
-  }
-}
