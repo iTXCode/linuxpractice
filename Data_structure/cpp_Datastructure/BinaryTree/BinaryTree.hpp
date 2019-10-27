@@ -12,18 +12,19 @@ public:
   typedef TreeNode<T> Node;
 public:
 
-  void BinaryTreeInit(Bitree root){
-    root->_left=NULL;
-    root->_left=NULL;
+  TreeNode(const T val=T()){
+    _left=NULL;
+    _right=NULL;
+    _val=val;
   }
-  void PreCreate(Bitree root,const char *str){
+  void PreCreate(Bitree* root,const char *str){
     if(*str=='#'){
-      root=NULL;
+      *root=NULL;
     }else{
-      root=(Bitree)malloc(sizeof(Node));
-      root->_val=*str;
-      PreCreate(root->_left,++str);
-      PreCreate(root->_right,++str);
+      *root=(Bitree)malloc(sizeof(Node));
+      (*root)->_val=*str;
+      PreCreate(&(*root)->_left,++str);
+      PreCreate(&(*root)->_right,++str);
     } 
   }
     //前序遍历

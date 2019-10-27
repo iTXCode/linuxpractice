@@ -3,10 +3,10 @@
 
 void TestTree(){
   TreeNode<char> tree;
-
+  TreeNode<char>* root=&tree; 
   char str[]="ABD##E##CF##G##";
-  tree.BinaryTreeInit(&tree);
-  tree.PreCreate(&tree,str);
+
+  tree.PreCreate(&root,str);
   tree.PostOrderTravel(&tree);
   tree.InOrderTravel(&tree);
   tree.PostOrderTravel(&tree);
