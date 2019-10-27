@@ -1,13 +1,13 @@
 #include"BinaryTree.hpp"
 
+
 void TestTree(){
-  Bitree<char> tree;
+  TreeNode<char> tree;
 
-  std::string s="ABD##E##CF##G##";
-  tree.PreCreate(tree,&s);
+  char str[]="ABD##E##CF##G##";
+  tree.PreCreate(&tree,str);
+
 }
-
-
 int main(){
   TestTree();
   return 0;
