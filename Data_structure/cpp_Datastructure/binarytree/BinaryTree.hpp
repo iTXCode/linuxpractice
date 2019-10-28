@@ -16,25 +16,26 @@ public:
   }
 
 
-  TreeNode<T>* CreateTree(TreeNode<T>* root){
+  TreeNode<T>** CreateTree(TreeNode<T>** root){
     T val;
     std::cin>>val;
     if(val=='#'){
-      root=NULL;
+      *root=NULL;
     }
     else{
-      if(root==NULL){
-        root=(TreeNode<T>*)malloc(sizeof(TreeNode<T>));
-        root->_left=root->_right=NULL;
+      if(*root==NULL){
+        (*root)=(TreeNode<T>*)malloc(sizeof(TreeNode<T>));
+        (*root)->_left=(*root)->_right=NULL;
       }
-      root->_val=val;
-      CreateTree(root->_left);
-      CreateTree(root->_right);
+      (*root)->_val=val;
+      CreateTree(&(*root)->_left);
+      CreateTree(&(*root)->_right);
     }
     return root;
   }
 void   BitreeInit(Bitree* root){
-    root->_root=CreateTree(root->_root);
+    TreeNode<T>** t_root=CreateTree(&(root->_root));
+    root->_root=*t_root;
   }
 
 void PreOrderTravel(TreeNode<T>*  root){

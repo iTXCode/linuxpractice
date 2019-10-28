@@ -6,7 +6,7 @@ void TestTree(){
   tree.BitreeInit(&tree);
   TreeNode<char>* root=tree.getroot();
   tree.PreOrderTravel(root);
-
+  std::cout<<std::endl;
  
 }
 
