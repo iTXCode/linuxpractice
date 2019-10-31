@@ -80,7 +80,7 @@ void Max_Min_SelectSort(int array[],int size){
       //此处的相等的情况是数组中只有一个数
       int min=min_Space;//记录最小元素的下标
       int max=max_Space;//记录最大元素的下标
-      for(int i=min_Space+1;i<max_Space;i++){
+      for(int i=min_Space+1;i<=max_Space;i++){
         if(array[i]>array[max_Space]){
           max =i;
         }
@@ -88,6 +88,8 @@ void Max_Min_SelectSort(int array[],int size){
           min=i;
         }
       }
+      if(min==min_Space)
+        continue;
       Swap(array+min,array+min_Space);
       if(min_Space==max){
         max=min;
@@ -105,19 +107,19 @@ void Adjust_Down(int *array,int size,int root){
 
   while(1){
     int left=2*root+1;
-    int right=2*root+2;
     if(left>=size){
       return;
     }
-  
+     
     int max=left;
-    if(left<size&&array[left]<array[right]){
+    int right=2*root+2;
+    if(right<size&&array[left]<array[right]){
       max=right;
     }
-    if(array[max]>=array[root]){
-      Swap(array+max,array+root);
-     
+    if(array[max]<=array[root]){
+        return;
     }
+    Swap(array+max,array+root);
     root=max;
   }
 
@@ -125,15 +127,17 @@ void Adjust_Down(int *array,int size,int root){
 
 
 void CreateHeap(int array[],int size){
-  for(int i=0;i<size;i++){
+  for(int i=(size-2)/2;i>=0;i--){
     Adjust_Down(array,size,i);
   } 
 }
 
 
-void HeapInit(int *array,int size){
-  array =(int*)malloc(sizeof(Heap)*size);
-  CreateHeap(array,size);
+void HeapInit(Heap *heap,int *array,int size){
+  heap->array =(int *)malloc(sizeof(Heap)*size);
+  heap->size=size;
+  memcpy(heap->array,array,sizeof(int)*size);
+  CreateHeap(heap->array,heap->size);
 }
 
 
@@ -143,14 +147,12 @@ void HeapInit(int *array,int size){
 //空间复杂度:O(1)
 //不稳定
 void HeapSort(int array[],int size){
-  //建大堆
-
+  //建大堆  
   for(int i=0;i<size-1;i++){
     Swap(&array[0],&array[size-1-i]);
     //向下调整
     Adjust_Down(array,size-1-i,0);
   }
-
 }
 
 void TestSort(){
@@ -166,7 +168,8 @@ void TestSort(){
   Max_Min_SelectSort(array,size);
   PrintArray(array,size);
   Heap heap;
-  HeapInit(heap.array,heap.size);
+  HeapInit(&heap,array,size);
+  PrintArray(heap.array,heap.size);
   HeapSort(heap.array,heap.size);
   PrintArray(heap.array,heap.size);
 }
