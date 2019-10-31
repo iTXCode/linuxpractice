@@ -33,6 +33,7 @@ void InsertSort(int array[],int size){
 }
 
 //排逆序的情况
+//排降序
 void InsertSortR(int array[],int size){
   
   for(int i=1;i<size;i++){
@@ -60,7 +61,7 @@ void InsertSortR(int array[],int size){
 //最好时间复杂度    平均      最坏
 //
 //空间复杂度:
-
+//带有Gap的插入排序，派升序
 void InsertSortWithGap(int array[],int size,int gap){
   for(int i=gap;i<size;i++){
     int k=array[i];
@@ -76,6 +77,13 @@ void InsertSortWithGap(int array[],int size,int gap){
   }
 }
 
+
+
+//希尔排序
+//升序
+//O(n^1.3-n^2)
+//空间复杂度：O（1）
+//不稳定
 void ShellSort(int array[],int size){
   int gap=size;
   while(1){
