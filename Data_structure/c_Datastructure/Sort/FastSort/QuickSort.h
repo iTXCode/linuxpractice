@@ -1,4 +1,5 @@
 #include<stdio.h>
+#include<malloc.h>
 #if 0
 //快速排序
 //时间复杂度:O(n)
@@ -152,7 +153,7 @@ void Test(){
 //非递归的写法
 //需要利用栈实现
 
-
+/*
 #include<stack>
 
 void _QuickSort(int array[],int left,int right){
@@ -182,8 +183,131 @@ void _QuickSort(int array[],int left,int right){
     s.push(_left);
   }
 }
+*/
+
+
+//归并排序
+//时间复杂度
+//最好|平均|最坏  O(n*log(n))
+//空间复杂度:O(n)
+//稳定性:稳定
+//时间复杂度:O(n*log(n))
+//空间复杂度:O(n)+O( log(n) )
+//其中O(log(n))一般忽略
+
+
+void Print(int array[],int size){
+  for(int i=0;i<size;i++){
+    printf("%d ",array[i]);
+  }
+  printf("\n");
+}
+
+
+//合并两个有序数组
+//[left,mid)
+//[mid,right)
+//时间复杂度:O(n)
+//空间复杂度:O(n)
+void Merge(int*array,int left,int mid, int right,int *new_array){
+  int size=right-left;
+  
+  
+  int left_index=left;
+  int right_index=mid;
+  int extra_index=0;
+  
+  while(left_index<mid&&right_index<right){
+    if(array[left_index]<=array[right_index]){
+      new_array[extra_index]=array[left_index];
+      left_index++;
+    }
+    else{
+      new_array[extra_index]=array[right_index];
+      right_index++;
+    }
+    extra_index++;
+  }
+
+  while(left_index<mid){
+    new_array[extra_index++]=array[left_index++];
+  }
+
+  while(right_index<right){
+    new_array[extra_index++]=array[right_index++];
+  }
+
+  for(int i=0;i<size;i++){
+    array[left+i]=new_array[i];
+  }
+  
+}
+
+//归并排序
+//区间是array[left,right)
+//左闭右开的区间
+void _MergeSort(int array[],int left,int right,int *new_array){
+  if(right==left+1){
+    return;
+  //区间中还剩一个数
+  }
+  if(left>=right){
+    //区间中没有数
+    return;
+  }
+  int mid=left+(right-left)/2;
+  //区间被分成左右两个小区间
+  //[left,mid)
+  //[mid,right)
+  //先把左右两个小区间进行排序,分治算法，递归解决
+  _MergeSort(array,left,mid,new_array);
+  _MergeSort(array,mid,right,new_array);
+
+  //左右两个区间已经有序了
+  //合并两个有序的数组
+  
+  Merge(array,left,mid,right,new_array);
+
+}
 
 
 
 
+//归并排序的非递归实现
+void MergeSortNor(int array[],int size){
+  int *new_array=(int*)malloc(sizeof(int)*size);
+  for(int i=1;i<size;i*=2){
+    for(int j=0;j<size;j+=2*i){
+      int left=j;
+      int mid=left+i;
+      if(mid>=size){
+        continue;
+      }
 
+      int right=mid+i;
+      if(right>size){
+        right=size;
+      }
+      Merge(array,left,mid,right,new_array );
+    }
+  }
+  free(new_array);
+}
+
+void MergeSort(int array[],int size){
+  int *new_array=(int *)malloc(sizeof(int)*size);
+  _MergeSort(array,0,size,new_array);
+  free(new_array);
+}
+void Test(){
+  int array[]={0,23,34,65,57,6,8,86,79,80};
+  int size=sizeof(array)/sizeof(array[0]);
+  Print(array,size);
+  MergeSort(array,size);
+  Print(array,size);
+  int arr[]={1,4,3,5,7,6,5,46,65,75,673};
+  int size1=sizeof(arr)/sizeof(arr[0]);
+  MergeSortNor(arr,size1);
+  Print(arr,size1);
+
+}
