@@ -16,32 +16,49 @@ int main(){
     perror("socket");
     return 1;
   }
-  //2.把当前的socket  绑定上一个ip + 端口号
-  sockaddr_in addr;   //是一个结构体
-  addr.sin_family=AF_INET;
-  addr.sin_addr.s_addr = inet_addr("0.0.0.0"); //0.0.0.0将本地所有的ip都包含进来 
-  //把点分十进制转换成32位整数
-    //设置ip地址
-    //ip 地址也是一个整数,也需要转成网络字节序,只不过
-    //int_addr 函数自动帮我们转了
+  //2.把当前的socket  绑定一个ip + 端口号
+  sockaddr_in addr;   //争对不同的协议,使用的是一个
+  //比较通用的结构体
+  addr.sin_family=AF_INET;//指定协议
+  addr.sin_addr.s_addr = inet_addr("0.0.0.0"); 
+  //0.0.0.0将本地所有的ip都包含进来 
+  //函数inet_addr把点分十进制转换成32位整数
+  //设置ip地址
+  //ip 地址也是一个整数,也需要转成网络字节序,只不过
+  //int_addr 函数自动转换了
   addr.sin_port=htons(9090);
-  //端口号必须得先转成网络字节序
+  //9090为主机字节序的内容
+  //端口号必须得先使用htons函数转成网络字节序
   int ret=bind(sock,(sockaddr*)&addr,sizeof(addr));
+  //参数
+  //1创建的socket文件描述符sock
+  //2.结构体指针(参数需要转换类型)
+  //3.当前addr结构占用的字节数
   if(ret<0){
     perror("bind");
     return 1;
   }
+  
 
+  //端口号启动成功
   printf("server start ok!\n");
   //3.处理服务器收到的请求
   while(true){
     //1.读取客户端的请求
     //面向数据报的函数
-    sockaddr_in peer;//获取客户端的ip
-    socklen_t len=sizeof(peer);//表示一个整数
+    sockaddr_in peer;//表示客户端的ip和端口号
+    socklen_t len=sizeof(peer);
+    //表示一个整数描述结构体的长度
+    //len是一个输入输出参数
     char buf[1024]={0};
     ssize_t n= recvfrom(sock,buf,sizeof(buf)-1,0,(sockaddr*)&peer,&len);
-   
+  // recvfrom 面向数据报的函数,为UDP量身定做
+  // 返回本次读取的消息长度
+  // 参数
+  // 1.指定从对应的文件描述符对应的文件中读取数据
+  // 2.将网卡中读取到的文件内容存储到内存中
+  // 4.填0就行
+  
    if(n<0){
      perror("recvfrom");
      continue;//考虑到容错,不要因为一次请求的失利就结束整个程序
@@ -55,9 +72,10 @@ int main(){
       perror("sendto");
       continue;
     }
-    printf("[%s:%d] buf: %s\n",inet_ntoa(peer.sin_addr),
-      ntohs(peer.sin_port), buf);
+    printf("[%s:%d] buf: %s\n",inet_ntoa(peer.sin_addr),ntohs(peer.sin_port), buf);
   }
+  //inet_ntoa 把socketaddr 转成点分十进制的字符串结构
+  // ntohs 把网络字节序转换成主机字节序
   close(sock);
   return 0;
 }
