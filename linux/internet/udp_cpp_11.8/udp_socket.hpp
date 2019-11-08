@@ -7,7 +7,7 @@
 #include<netinet/in.h>
 #include<arpa/inet.h>
 
-class UdpSocket{
+class UdpSocket{//用来包装socket
   public:
 
     UdpSocket()
@@ -33,11 +33,12 @@ class UdpSocket{
       return true;
     }
     bool Bind(const std::string& ip,uint16_t port){
+      //bind应该和一个ip和端口号向关联
       //需要根据函数构造一个sockaddr_in 结构
       //调用 bind  
       sockaddr_in  addr;
-      addr.sin_family=AF_INET;
-      addr.sin_addr.s_addr=inet_addr(ip.c_str());
+      addr.sin_family=AF_INET;//指定协议IPV4
+      addr.sin_addr.s_addr=inet_addr(ip.c_str());//指定ip
       addr.sin_port=htons(port);
       int ret=bind(_fd,(sockaddr*)&addr,sizeof(addr));
       if(ret<0){
@@ -89,7 +90,7 @@ class UdpSocket{
     }
 
   private:
-    int _fd;  //用来表示 socket  
+    int _fd;  //用来表示 socket(本质为文件描述符)  
 };
 
 

@@ -16,12 +16,20 @@
 
 //c++ 11 引入
 typedef  std::function<void(const std::string&,
-    std::string*)>  Handler;
+    std::string*)>  Handler; 
+//标准库中提供的一个线程模板,需要包含头文件function.h
 
+//通用的Udp服务器
+//1.读取请求
+//2.根据请求计算响应
+//3.把响应写回客户端
+//其中1，3为固定套路,不管是啥场景,代码都一样
+//2 和业务相关,所以就把2对应的代码提取成一个回调函数
 class UdpServer{
 public:
   UdpServer( ){
   assert(_sock.Socket());
+  //创建我们封装好的socket
   }
 
   ~UdpServer(){

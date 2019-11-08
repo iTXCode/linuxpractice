@@ -9,8 +9,9 @@
 
 
 //./client [ip]
-int main(int argc,char *argv[]){
-
+int main(int argc,char *argv[]){//让用户以命令行
+  //的形式输入服务器的ip
+   
   //1.先创建一个socket 文件
   int sock=socket(AF_INET,SOCK_DGRAM,0);
   //参数表述:
@@ -22,7 +23,7 @@ int main(int argc,char *argv[]){
     return 1;
   }
 
-  //2.客户端一般不需要bind
+  //客户端一般不需要bind
   //bind  意味着和某个具体的端口号关联在一起
   //如果没有bind，操作系统会随机分配一个端口号
   //如果是服务器程序不去bind ，就会导致每次启
@@ -40,6 +41,7 @@ int main(int argc,char *argv[]){
   sockaddr_in  server_addr;
   server_addr.sin_family=AF_INET;
   server_addr.sin_addr.s_addr=inet_addr(argv[1]);
+  //inet_addr 获取服务器的ip
   server_addr.sin_port=htons(9090);
    
   //3.客户端直接发送数据即可
@@ -59,3 +61,5 @@ int main(int argc,char *argv[]){
   }
   return 0;
 }
+
+
