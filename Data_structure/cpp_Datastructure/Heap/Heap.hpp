@@ -34,9 +34,11 @@ class ReHeap{
      if(array==NULL){
         return;
       }
-      for(int i=0;i<size;i++){
-       printf("%d ",array[i]); 
+      
+     for(int i=0;i<size;i++){
+       std::cout<<array[i]<<" ";
       }
+
       printf("\n");
     }
   
@@ -62,7 +64,7 @@ class ReHeap{
         int min=left;
         //找出左右下标最小的那个和根结点值比较大小
 
-        if(right<=size-1&&array[right]<array[left]){
+        if(right<size&&array[right]<array[left]){
           min=right; //剑小堆
         }
 
@@ -108,10 +110,23 @@ class ReHeap{
       }
     }
 
-    void HeapPush(ReHeap<T>& heap,const T value){ 
-     heap._heap->_array[heap._heap->_size++]=value;
-  
-     AdjustUp(heap._heap->_array,heap._heap->_size,heap._heap->_size-1); 
+    void HeapPush(Heap<T>* heap,const T value){ 
+     T* array=(T*)malloc(sizeof(T)*(heap->_size+1));
+     memcpy(array,heap->_array,sizeof(T)*(heap->_size));
+     heap->_array=array;
+     heap->_array[heap->_size++]=value;
+     AdjustUp(heap->_array,heap->_size,heap->_size-1); 
+    }
+
+
+    //删除元素
+    void HeapPop(Heap<T> *heap){
+      Swap(&heap->_array[0],&heap->_array[heap->_size-1]);
+      printf("haha:%d",heap->_size); 
+      heap->_size--;
+      printf("hehe:%d\n",heap->_size);
+      AdjustDown(heap->_array,heap->_size,0);
+      printf("hehe:%d\n",heap->_size);   
     }
   private:
     Heap<T>* _heap;

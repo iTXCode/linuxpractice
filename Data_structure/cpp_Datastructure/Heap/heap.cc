@@ -5,8 +5,15 @@ int main(){
   int size=sizeof(array)/sizeof(array[0]);
   ReHeap<int> heap;
   Heap<int> _Heap;
-  Heap<int>* _heap=heap.getheap();
   heap.HeapInit(&heap,_Heap,array,size);
+  heap.PrintHeap(array,size);
+  Heap<int>* _heap=heap.getheap();
+  heap.PrintHeap(_heap->_array,_heap->_size);
+  heap.HeapPush(_heap,10);
+  heap.PrintHeap(_heap->_array,_heap->_size);
+  printf("%d\n",_heap->_size);//11
+  heap.HeapPop(_heap);
+  printf("%d\n",_heap->_size);
   heap.PrintHeap(_heap->_array,_heap->_size);
   return 0;
 }
