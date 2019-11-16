@@ -22,13 +22,17 @@ void  TestHeap(){
     std::cout<<"您要找的值不在堆序列中!"<<std::endl;
   }
   
-  int m_value;
+
   printf("请输入您要修改的值:");
   std::cin>>value;
-  printf("请输入您修改后的值:");
-  std::cin>>m_value;
-  heap.HeapModify(&heap,value,m_value);
+  
+  heap.HeapModify(&heap,value);
   heap.PrintHeap(&heap);
+  //排降序
+  heap.SortUp(&heap,size);
+  heap.PrintHeap(&heap);
+
+
 
 }
 

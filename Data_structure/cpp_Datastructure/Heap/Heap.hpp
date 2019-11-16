@@ -107,18 +107,34 @@ class Heap{
     }
 
 
-    void HeapModify(Heap<T>* heap,T value,T M_value){
+    void HeapModify(Heap<T>* heap,T value){
       int index=0;
       for(int i=0;i<heap->_size;i++){
         if(value==heap->_array[i]){
           index=i;
         }
       }
-
-      heap->_array[index]=M_value;
+      if(index==0){
+        printf("你要修改的对象不存在!\n");
+        return;
+      }
+      std::cout<<"请输入你要修改后的值:";
+      int Rvalue;
+      std::cin>>Rvalue;
+      heap->_array[index]=Rvalue;
     }
+   
 
+    //堆排序排升序
+    void SortUp(Heap<T>* heap,int size){
+      for(int i=0;i<size;i++)
+      {  Swap(heap->_array,heap->_array+(size-1-i));
+        AdjustDown(heap->_array,heap->_size,(heap->_size-1-i)); 
+      }
+    }
+   
 
+   
   private:
     T* _array;
     int _size;
