@@ -55,6 +55,16 @@ void QueuePop(Queue *queue) {
   queue->size--;
 }
 
+void PrintQueue(Queue *queue){
+  assert(queue!=NULL);
+  Node* cur=queue->front;
+  for(int i=0;i<queue->size;i++){
+    printf("%d ",cur->value);
+    cur=cur->next;
+  }
+  printf("\n");
+}
+
 
 
 
