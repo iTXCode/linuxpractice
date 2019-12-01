@@ -4,9 +4,10 @@
 tempalte <class T>
 struct Node{
     Node(const T val){
-        _next=NULL;
+        _prev=_next=NULL;
         _value=val;
     }
+    Node* _prev;
     Node* _next;
     T _value;
 };
@@ -30,12 +31,26 @@ public:
         }
         //针对栈中已经有元素的情况
         Node<T>* cur=new Node<T> (val);
+        cur->_prev=stack->top;
         stack->top->_next=cur;
         stack->top=cur;
         stack->size++;
         return;
     }
     
+    void StackPop(Stack<T>* stack){
+        if( stack==NULL){
+            return;
+        }
+        //若用单链表来实现栈的话,当释放栈顶元素的时候
+        //就不能将栈顶指针指向栈的顶部
+        //所以我们采用双链表实现栈
+
+        Node<T>* cur=stack->top->_prev;
+        delete stack->top;
+        stack->top=cur;
+        cur->_next=NULL;
+    }
 
     //返回栈顶元素
     Node<T>* Top(){
@@ -55,6 +70,25 @@ public:
         }
         return 0;
     }
+
+    //打印栈中的元素
+    //按照从栈顶到栈底的顺序依次打印栈中元素
+    void StackPrint(cosnt Stack<T>* stack){
+        if(stack==NUUL){
+            return;
+        }
+         Node<T>* cur;
+        for(int i=stack->size;i>0;i++){
+            if(cur==NULL){
+                break;
+            }
+            cur=stack->top;
+            printf("%d ",cur->_value);
+            cur=cur->_prev;
+        }
+        std::cout<<std::endl;
+    }
+
 
 private:
     Node<T>* top;//指向栈顶的首元素
