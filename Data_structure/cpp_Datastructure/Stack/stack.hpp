@@ -1,7 +1,7 @@
-#icnlude<iostream>
+#include<iostream>
 
 
-tempalte <class T>
+template <class T>
 struct Node{
     Node(const T val){
         _prev=_next=NULL;
@@ -12,7 +12,7 @@ struct Node{
     T _value;
 };
 
-tempalte<class T>
+template<class T>
 
 class Stack{
 public:
@@ -50,39 +50,39 @@ public:
         delete stack->top;
         stack->top=cur;
         cur->_next=NULL;
+        stack->size--;
     }
 
     //返回栈顶元素
     Node<T>* Top(){
-        return top;
+        return this.top;
     }
 
     //返回栈中元素个数
 
-    int size(){
-       return size; 
+    int Size(){
+       return (int)size; 
     }
 
     //判断栈是否为空
     bool Empty(){
         if(size==0){
-            return 1;
+            return true;
         }
-        return 0;
+        return false;
     }
 
     //打印栈中的元素
     //按照从栈顶到栈底的顺序依次打印栈中元素
-    void StackPrint(cosnt Stack<T>* stack){
-        if(stack==NUUL){
+    void StackPrint(const Stack<T>* stack){
+        if(stack==NULL){
             return;
         }
-         Node<T>* cur;
-        for(int i=stack->size;i>0;i++){
+         Node<T>* cur=stack->top;
+        for(int i=stack->size;i>0;i--){
             if(cur==NULL){
                 break;
             }
-            cur=stack->top;
             printf("%d ",cur->_value);
             cur=cur->_prev;
         }
@@ -93,4 +93,4 @@ public:
 private:
     Node<T>* top;//指向栈顶的首元素
     int size;//记录栈的规模
-}
+};
