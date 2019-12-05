@@ -17,3 +17,10 @@ create table man(
     age int ,
     addr char(20)
 );
+
+
+
+
+
+
+
