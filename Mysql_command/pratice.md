@@ -24,7 +24,39 @@ where sal>(
 select * from emp,(
     select avg(sal) as avgsal
      from emp
-)
-where sal>avgsal;
-- 显示每个部门的平均工资和最高工资
+),tmp 
+where sal>tmp.avgsal;
 
+
+- 显示每个部门的平均工资和最高工资
+select deptno,avg(sal),max(sal)
+from emp 
+group by deptno;
+
+- 显示平均工资低于2000的部门
+- 号和它的平均工资
+
+- No1
+create view v_tmp as selest
+deptno,avg(sal)
+as avgsal from emp
+group by deptno;
+
+select * from v_tmp
+where avgsal<2000;
+
+
+- NO2
+select avg(sal) as avgsal,
+deptno from emp
+group  by deptno having 
+avgsal <2000;
+
+-  显示每种岗位的雇员总数,平均工资
+
+select job,count(*),avg(sal)
+from emp group by job;
+
+
+
+- 便签应用数据库项目
