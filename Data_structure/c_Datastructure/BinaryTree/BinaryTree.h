@@ -2,6 +2,7 @@
 #include<assert.h>
 #include<stdlib.h>
 #include<queue>
+
 typedef char  TNType;
 
 typedef struct TreeNode{

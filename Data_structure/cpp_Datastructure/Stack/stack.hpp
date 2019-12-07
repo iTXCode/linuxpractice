@@ -20,7 +20,7 @@ public:
      top=NULL;
      size=0;
  }
-    //网站中插入元素
+    //往栈中插入元素
     void StackPush(Stack<T>* stack,const T val){
         if(stack->top==NULL){
             //如果为第一次插入,则需要将指向栈中节点的指针指向
@@ -94,3 +94,7 @@ private:
     Node<T>* top;//指向栈顶的首元素
     int size;//记录栈的规模
 };
+
+
+
+
