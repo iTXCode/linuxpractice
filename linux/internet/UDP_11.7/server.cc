@@ -11,8 +11,10 @@ int main(){
   //1.先创建一个socket
   // AF_INET是一个宏 ,表示使用 ipv4 协议
   //SOCK_DGRAM   表示使用 UDP 协议
+  //第三个参数一般不用
   int sock=socket(AF_INET,SOCK_DGRAM,0);
   if(sock<0){
+    //用于查看创建socket是否成功了
     perror("socket");
     return 1;
   }
@@ -21,6 +23,7 @@ int main(){
   //比较通用的结构体
   addr.sin_family=AF_INET;//指定协议
   addr.sin_addr.s_addr = inet_addr("0.0.0.0"); 
+
   //0.0.0.0将本地所有的ip都包含进来 
   //函数inet_addr把点分十进制转换成32位整数
   //设置ip地址
@@ -28,11 +31,11 @@ int main(){
   //int_addr 函数自动转换了
   addr.sin_port=htons(9090);
   //9090为主机字节序的内容
-  //端口号必须得先使用htons函数转成网络字节序
+  //端口号必须得先使用htons函数将主机字节序转成网络字节序
   int ret=bind(sock,(sockaddr*)&addr,sizeof(addr));
   //参数
   //1创建的socket文件描述符sock
-  //2.结构体指针(参数需要转换类型)
+  //2.结构体指针(参数需要转换类型)sockaddr
   //3.当前addr结构占用的字节数
   if(ret<0){
     perror("bind");
@@ -57,17 +60,22 @@ int main(){
   // 参数
   // 1.指定从对应的文件描述符对应的文件中读取数据
   // 2.将网卡中读取到的文件内容存储到内存中
+  // 3.缓冲区中有效长度(客户端请求内容的长度)
   // 4.填0就行
+  // 5.获取对方的ip和端口号等信息
+  // 6.描述结构体 sockaddr_in 的长度
   
    if(n<0){
      perror("recvfrom");
-     continue;//考虑到容错,不要因为一次请求的失利就结束整个程序
+     continue;//考虑到容错,服务器不会因为客户端的一次请求失败就断开与客户的链接
    }
-   buf[n]='\0';
+   buf[n]='\0'; //Double check
     //2.根据请求计算响应时间
     //[略]此处写的是一个回显服务器(echo server)
     //3.把响应写回客户端
+
     n=sendto(sock,buf,strlen(buf),0,(sockaddr*)&peer,len);
+  
     if(n<0){
       perror("sendto");
       continue;
@@ -76,6 +84,6 @@ int main(){
   }
   //inet_ntoa 把socketaddr 转成点分十进制的字符串结构
   // ntohs 把网络字节序转换成主机字节序
-  close(sock);
+  close(sock);  //关闭socket 文件描述符
   return 0;
 }
