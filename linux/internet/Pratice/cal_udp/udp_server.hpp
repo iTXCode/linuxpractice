@@ -30,6 +30,7 @@ bool Start(const std::string& ip,uint16_t port,Handler handler){
     std::string peer_ip;
     uint16_t peer_port;
     _sock.RecvFrom(&req,&peer_ip,&peer_port);
+     printf("client req:%s\n",req.c_str());
     //2.根据请求计算响应
     std::string resp;
     handler(req,&resp);
@@ -37,6 +38,7 @@ bool Start(const std::string& ip,uint16_t port,Handler handler){
 
     //3.将响应结果发送给客户端
     _sock.SendTo(resp,peer_ip,peer_port);
+    printf("server resp:%s\n",resp.c_str());
   }
   return true;
 }

@@ -15,9 +15,6 @@ class UdpSocket{
 
     }
 
-    ~UdpSocket(){
-    
-    }
 
     bool Socket(){
       _fd=socket(AF_INET,SOCK_DGRAM,0);
@@ -79,8 +76,10 @@ class UdpSocket{
         uint16_t port){
       sockaddr_in addr;
       addr.sin_family=AF_INET;
-      addr.sin_addr.s_addr=inet_addr(ip.c_str());
+      addr.sin_addr.s_addr=inet_addr(ip.c_str()); 
+      //函数inet_addr 将点分十进制的ip地址转换成32整数
       addr.sin_port=htons(port);
+      //端口号必须得先使用htons函数将主机字节序转成网络字节序
       ssize_t n=sendto(_fd,msg.c_str(),msg.size(),0,(sockaddr*)&addr,sizeof(addr));
 
       if(n<0){
