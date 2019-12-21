@@ -17,7 +17,7 @@ class UdpSocket{//用来包装socket
     }
     //打开一个udp 的socket
     //返回true 表示创建成功,false  表示失败
-    bool Socket(){
+    bool Socket(){ 
       _fd =socket(AF_INET,SOCK_DGRAM,0);
       if(_fd<0){
         perror("socket");
@@ -26,7 +26,7 @@ class UdpSocket{//用来包装socket
       return true;
     }
 
-    bool  Close(){
+    bool  Close(){ //关闭Socket
       if(_fd!=-1){
         close(_fd);
       }

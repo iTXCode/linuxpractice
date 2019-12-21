@@ -37,9 +37,9 @@ public:
       uint16_t port;
       //核心问题在于,第一次Accept 之后就进入了一个循环
       //在这个操作过程中,循环一直没有结束,Accept 没有被重复调用到
-      //后续链接过来的客户端都在内核中的链接队列中排队呢,一直得不到处理
+      //后续链接过来的客户端都在内核中的链接队列中处于等待处理的状态(排队),一直得不到处理
       //应该想办法让我们的程序能够更快速的调用到Accept
-      //多进程或者多线程解决
+      //使用多进程或者多线程解决该问题
       bool ret=listen_sock_.Accept(&client_sock,&ip,&port);
       //listen_sock_ 负责与客户端取到链接，一旦链接成功就将
       //客户端交给client_sock负责客户端与服务器进行沟通
@@ -74,3 +74,4 @@ public:
 private:
   TcpSocket listen_sock_;
 };
+

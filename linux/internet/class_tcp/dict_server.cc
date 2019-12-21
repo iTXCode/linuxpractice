@@ -8,15 +8,16 @@ int main(){
   dict.insert(std::make_pair("world","世界") );
   dict.insert(std::make_pair("bit","比特") );
   dict.insert(std::make_pair("byte","字节") );
+  dict.insert(std::make_pair("jun","筠"));
   TcpServer  server;
   server.Start("0.0.0.0",9090,[&dict](const std::string &req,
         std::string *resp){
           auto it=dict.find(req);
-          if(it==dict.end()){
+          if(it==dict.end()){ //说明没有找到
           *resp="未找到！";
           }else{
           *resp=it->second;
           }
-      });
+      });  //用lamda表达式
   return 0;
 }

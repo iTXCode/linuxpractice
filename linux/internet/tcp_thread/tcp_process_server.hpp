@@ -18,9 +18,11 @@ public:
   ~TcpProcessServer(){
     _listen_sock.Close();
   }
+
+
   bool Start(const std::string& ip,uint16_t port,
       Handler handler){
-    signal(SIGCLD,SIG_IGN);
+    signal(SIGCLD,SIG_IGN);  //解决子进程断开连接后变成僵尸进程的问题
     //1.创建 socket 
     CHECK_RET(_listen_sock.Socket() );
     // 2.绑定端口号
@@ -60,13 +62,13 @@ private:
       client_sock.Close();
       return ;
     }
-    //3.子进程循环的做一下事情
+    //3.子进程循环的做以下事情
      //  a.读取客户端请求
    while(true) { 
      std::string req;
-     int r=client_sock.Recv(&req);
+     int r=client_sock.Recv(&req);  
      if(r<0){
-       continue;
+       continue;   //读取失败就继续读取
      }
      if(r==0){
        printf("[%s:%d] 客户端断开链接!\n",ip.c_str(),port);
@@ -87,3 +89,6 @@ private:
    exit(0); 
   }
 };
+
+
+

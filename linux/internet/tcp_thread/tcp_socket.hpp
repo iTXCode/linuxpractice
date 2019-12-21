@@ -22,6 +22,8 @@ public:
     }
    return true;
   }
+
+   
   //给服务器使用
   bool Bind(const std::string&ip,uint16_t port){
     sockaddr_in addr;
