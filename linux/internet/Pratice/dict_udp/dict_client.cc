@@ -22,7 +22,7 @@ int main(int argc,char *argv[]){
 
    std::string result;
    client.RecvFrom(&result);
-   std::cout<<word<<"意思为:"<<result<<std::endl;
+   std::cout<<"server resp:"<<result<<std::endl;
    
  }
  return 0;
