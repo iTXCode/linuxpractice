@@ -4,7 +4,7 @@
 
 //请求
 //响应
-//
+// 约定协议
 //使用JSon 的方式进行序列化和反序列化
 //{
 //"num1":10,
@@ -34,6 +34,7 @@ int main(){
       int num2=req_json["num2"].asInt();
       std::string op=req_json["op"].asString();
       int result=0;
+      //2.进行计算
       if(op=="+"){
       result=num1+num2;
       }else if(op=="-"){
@@ -51,3 +52,32 @@ int main(){
       });
   return 0;
 }
+
+
+/*
+序列化的方法
+#include<sstream>
+
+std::stringstream  ss(req);   //用req进行初始化
+int num1=0'
+int num2=0;
+std::string op;
+ss>>num1;   //cin重从键盘读取数据,而ss从stringstream中读取数据
+ss>>num2;
+ss>>op
+
+ //2.进行计算
+ int reet=0;
+ if(op=="+"){
+   ret=num1+num2;
+ }else if(op=="-"){
+   ret=num1-num2;
+ }else if(op=="*"){
+   ret=num1*num2;
+ }else if(op=="/"){
+   ret=num1/num2;
+ }
+
+ *resp=std::to_string(ret); //将计算结果反序列化成字符串
+ 
+*/

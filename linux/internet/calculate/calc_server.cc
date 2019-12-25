@@ -28,8 +28,8 @@ int main(){
       }
       //3.把结果再序列化
       //*resp=std::to_string(ret);
-      std::stringstream  ss_resp;
-      ss_resp<<ret;
+      std::stringstream  ss_resp; 
+      ss_resp<<ret;    //可以通过这种操作往stringstream塞任何长度的信息
       *resp=ss_resp.str() ;
   });
   return 0;

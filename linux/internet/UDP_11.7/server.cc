@@ -25,7 +25,7 @@ int main(){
   addr.sin_addr.s_addr = inet_addr("0.0.0.0"); 
 
   //0.0.0.0将本地所有的ip都包含进来 
-  //函数inet_addr把点分十进制转换成32位整数
+  //数函数inet_addr把点分十进制转换成32位整
   //设置ip地址
   //ip 地址也是一个整数,也需要转成网络字节序,只不过
   //int_addr 函数自动转换了

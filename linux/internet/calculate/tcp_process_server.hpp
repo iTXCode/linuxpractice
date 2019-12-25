@@ -60,7 +60,7 @@ private:
       client_sock.Close();
       return ;
     }
-    //3.子进程循环的做一下事情
+    //3.子进程循环的做以下事情
      //  a.读取客户端请求
    while(true) { 
      std::string req;
@@ -82,6 +82,7 @@ private:
    }
    //子进程的收尾工作
    //1.关闭socket
+   
    client_sock.Close();
    //2.结束进程
    exit(0); 

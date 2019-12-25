@@ -13,7 +13,7 @@ int main(){
         std::string *resp){ 
       auto it=dict.find(req);
       if(it==dict.end()){
-      *resp="为找到结果!";
+      *resp="(未找到结果!";
       }else{
       *resp=it->second;
       }

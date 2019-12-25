@@ -23,7 +23,7 @@ int main(int argc,char* argv[]){
     std::string resp;
 
     client.Recv(&resp);
-    printf("resp:%s\n",resp.c_str());
+    printf("resp:%s",resp.c_str());
   }
   return 0;
 }
