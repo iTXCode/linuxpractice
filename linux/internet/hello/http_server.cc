@@ -9,7 +9,7 @@ void HttpProcess(const std::string& req,std::string* resp){
   (void)req;  //不管请求内容直接转换成void* 类型
   std::string first_line="HTTP/1.1 200 OK\n";
   std::string body="<html><div>hello world!</div></html>";
-  std::string header="Content-Type: text/html\nContent-Length"+std::to_string(body.size())+"\n";
+  std::string header="Content-Type: text/html\nContent-Length:"+std::to_string(body.size())+"\n";
   *resp=first_line + header+"\n"+body;
 
 }
