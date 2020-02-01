@@ -13,6 +13,10 @@ public:
   {
 
   }
+
+  TcpSocket(int fd ):_fd(fd){
+
+  }
   bool Socket(){
     //和UDP 不同的是,第二个参数面向字节流(TCP)
     _fd=socket(AF_INET,SOCK_STREAM,0);
