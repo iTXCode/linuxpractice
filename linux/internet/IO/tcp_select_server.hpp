@@ -51,7 +51,7 @@ class Selector{
 
       //select 默认使阻塞等待，有文件描述符返回的时候,才能进行返回
       //  当这个函数返回之后,就应该根据文件描述符的返回情况
-      //  构造一个输出函数,告诉调用者那些socket 就绪了
+      //  构造一个输出参数,告诉调用者那些socket 就绪了
       int nfds=select(max_fd+1, &readfds, NULL,NULL,NULL);
 
       if(nfds<0){
@@ -90,7 +90,7 @@ typedef std::function<void(const std::string&,std::string*)> Handler;
     return false;\
   }
 
-class TcpSocketServer{
+class TcpSelectServer{
   public:
     //一个服务器程序在处理请求的时候典型的流程就是3个 步骤
     //1.读取请求并解析
@@ -98,11 +98,59 @@ class TcpSocketServer{
     //3.将响应结果写回到客户端
     bool Start(const std::string&ip,uint16_t port,Handler handler){
       //1.创建socket
-      TcpSocket _listen_sock;
-      CHECK_RET( _listen_sock.Socket());
+      TcpSocket listen_sock;
+      CHECK_RET( listen_sock.Socket());
       //2.绑定端口号
-      CHECK_RET(_listen_sock.Bind(ip,port));
-      ///3.
+      CHECK_RET(listen_sock.Bind(ip,port));
+      //3.监听文件描述符
+      CHECK_RET(listen_sock.Listen());
+      //4.先创建一个selector对象，让这个对象先把_listen_sock 管理起来
+      //后续进行等待,都是靠selector 对象完成
+      Selector Selector;
+      Selector.Add(listen_sock);
+      //5.进入主循环
+      while(true){
+        //6.不再是直接调用accept,而是使用selector进行 等待
+        std::vector<TcpSocket> output;
+        Selector.Wait(&output);
+        //7.遍历返回结果,依次处理每个就绪的socket
+        
+        for(auto tcp_socket : output){
+          //8.分成两种情况讨论
+     
+          if(tcp_socket.GetFd()==listen_sock.GetFd()){
+          //a.如果就绪队列 socket 是listen_sock要进行的操作是调用accept      
+            TcpSocket client_sock;
+            std::string ip;
+            uint16_t port;
+            tcp_socket.Accept(&client_sock,&ip,&port);
+            Selector.Add(client_sock);
+            printf("[client %s:%d] connected!\n",ip.c_str(),port);
+          }else{ 
+            //b.如果就绪的socket不是listen_sock 要进行的操作是调用recv
+            std::string req;
+            int n=tcp_socket.Recv(&req);
+
+            if(n<0){
+              continue;
+            }
+
+            if(n==0){
+              //对端关闭,同时也要把这个socket 从 Selector 中删掉
+              tcp_socket.Close();
+              Selector.Del(tcp_socket);
+              continue;
+            }
+
+
+            printf("[client] %s\n",req.c_str());
+            std::string resp;
+            //根据请求计算响应
+            handler(req,&resp);
+            tcp_socket.Send(resp); 
+          }
+        }
+      }
     }
   private:
 };
