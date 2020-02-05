@@ -2,7 +2,9 @@
 
 #include"tcp_socket.hpp"
 #include<sys/epoll.h>
+#include<functional>
 #include<vector>
+
 
 //Epoll 这个类就对标Selector 这个类
 class Epoll{
@@ -33,7 +35,8 @@ class Epoll{
     }
 
     void Wait(std::vector<TcpSocket>* output){
-     //等待文件描述符就绪
+      output->clear();
+      //等待文件描述符就绪
      epoll_event events[100];
      //最后一个参数表示阻塞等待
      //返回之后,就有若干个文件描述符就绪,保存在events 数组之中
@@ -58,3 +61,67 @@ class Epoll{
 
 };
 
+#define CHECK_RET(exp)\
+  if(!exp){\
+    return false;\
+  }
+
+typedef std::function<void(std::string&,std::string*)> Handler;
+
+class TcpEpollServer{
+  public:
+    bool Start(const std::string& ip,uint16_t port,Handler handler){
+      //1.创建socket
+      TcpSocket listen_sock;
+      CHECK_RET(listen_sock.Socket());
+      //2.绑定端口号
+      CHECK_RET(listen_sock.Bind(ip,port));
+      //3.监听socket
+      CHECK_RET(listen_sock.Listen());
+      //4.创建Epoll对象，并把listen_sock用Epoll管理起来
+      Epoll epoll;
+      epoll.Add(listen_sock);
+      //5.进入主循环
+      while(true){
+        //6.使用Epoll::Wait 等待文件描述符就绪
+        std::vector<TcpSocket> output;
+        epoll.Wait(&output);
+        //7.循环处理每个就绪的文件描述符，也是分成两种情况
+
+        for(auto sock:output){
+
+          if(sock.GetFd()==listen_sock.GetFd()){
+            // a.listen_sock 就调用Accept
+            TcpSocket client_sock;
+            sock.Accept(&client_sock);
+            epoll.Add(client_sock);
+          }else{
+            // b.非listen_sock就调用Recv 
+            std::string req;
+
+            int n=sock.Recv(&req);
+            if(n<0){
+              continue;
+            }
+
+            if(n==0){
+              //对端关闭
+              printf("[client_sock %d] disconnected!\n",sock.GetFd());
+              sock.Close();
+              epoll.Del(sock);
+              continue;
+            }
+
+            printf("[client %d] %s\n",sock.GetFd(),req.c_str());
+            //正确读取的情况
+            std::string resp;
+            handler(req,&resp);
+            sock.Send(resp);
+          }//end of else 
+          
+
+        }  //end of for 
+      }//end of while 
+    } //end of Start
+
+};
