@@ -4,7 +4,7 @@
 #include<string.h>
 
 int main(){
-  int fd=open("./myfifo",O_WRONLY);
+  int fd=open("./myfifo", O_WRONLY);
   if(fd<0){
     perror("open error");
     return 1;
