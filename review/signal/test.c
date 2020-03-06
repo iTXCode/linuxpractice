@@ -19,7 +19,6 @@
 #include<signal.h>
 
 
-
 //模拟实现kill
 int main(int argc,char* argv[]){
   //为了实现简单的kill指令,只进行处理一个进程
